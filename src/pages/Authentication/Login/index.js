@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Svg, { Path } from "react-native-svg";
+import { useNavigation } from "@react-navigation/native";
 
 import { LogoSvg } from "../components";
 
@@ -19,8 +19,10 @@ export default function Login() {
 
   const passwordRef = useRef(null);
 
+  const navigation = useNavigation();
+
   function handleSignIn() {
-    console.log("EMAIL", email, "PASSWORD", password);
+    navigation.navigate("Home");
   }
 
   return (
