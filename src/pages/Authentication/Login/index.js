@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigation } from "@react-navigation/native";
 
-import { LogoSvg } from "../components";
+import { LogoSvg } from "../../../components";
 
 // styles
 import {
