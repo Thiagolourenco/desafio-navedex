@@ -44,7 +44,7 @@ export const ListViewContent = Styled.View`
 `;
 
 export const ImageView = Styled.View`
- height: 170;
+    height: 170px;
     width: 156.56px;
     background: #ccc;
     /* margin-left: 16px;
@@ -73,7 +73,7 @@ export const GroupButton = Styled.View`
 export const ButtonRemove = Styled(RectButton)`
     height: 25px;
     width: 25px;
-    border-radius: 15;
+    border-radius: 15px;
     justify-content: center;
     align-items: center;
     
@@ -82,7 +82,7 @@ export const ButtonRemove = Styled(RectButton)`
 export const ButtonEdit = Styled(RectButton)`
     height: 25px;
     width: 25px;
-    border-radius: 15;
+    border-radius: 15px;
     justify-content: center;
     align-items: center;
     margin-left: 10px;

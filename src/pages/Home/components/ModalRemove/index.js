@@ -1,7 +1,6 @@
-import React from "react";
-import { Modal, View, Text } from "react-native";
+import React, { useEffect } from "react";
+import { Modal, View, Text, TouchableOpacity } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
-import { RectButton } from "react-native-gesture-handler";
 
 import {
   Container,
@@ -22,21 +21,22 @@ export default function ModalRemove({ visible, onRequestClose }) {
       visible={visible}
       onRequestClose={() => onRequestClose()}
       transparent={true}
+      animationType="slide"
     >
       <Container>
         <Content>
           <ContentHeader>
             <ContentHeaderTitle>Excluir naver</ContentHeaderTitle>
-            <RectButton onPress={() => onRequestClose()}>
+            <TouchableOpacity onPress={onRequestClose}>
               <Icon name="x" color="#212121" size={28} />
-            </RectButton>
+            </TouchableOpacity>
           </ContentHeader>
           <ContentValues>
             Tem certeza que deseja excluir este naver?
           </ContentValues>
 
           <ButtonGroupModal>
-            <ButtonCancel>
+            <ButtonCancel onPress={onRequestClose}>
               <ButtonCancelText>Cancelar</ButtonCancelText>
             </ButtonCancel>
             <ButtonRemove>

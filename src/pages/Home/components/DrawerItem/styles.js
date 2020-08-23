@@ -5,11 +5,11 @@ export const ButtonItem = Styled(RectButton)`
   height: 40px;
   width: 230px;
   border-radius: 10px;
-  margin-top: 10;
+  margin-top: 10px;
   align-self: center;
   align-items: center;
   justify-content: center;
-  border-width: 0.1;
+  border-width: 0.1px;
   border-color: #eee;
   flex-direction: row;
 `;

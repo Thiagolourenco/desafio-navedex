@@ -17,6 +17,7 @@ export const Label = Styled.Text`
     line-height: 18px;
     color: #212121;
     margin-top: 30px;
+    /* font-family: Montserrat-Regular; */
 
 `;
 
@@ -27,7 +28,7 @@ export const Input = Styled.TextInput.attrs({
   width: 328px;
   border-width: 1px;
   border-color: #424242;
-  padding-left: 10;
+  padding-left: 10px;
   margin-top: 5px;
 `;
 

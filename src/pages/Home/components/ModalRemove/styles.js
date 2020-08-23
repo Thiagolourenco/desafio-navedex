@@ -42,17 +42,21 @@ export const ContentValues = Styled.Text`
 export const ButtonGroupModal = Styled.View`
     flex-direction: row;
     align-self: center;
-    margin-top: 15px;
+    margin-top: 35px;
 `;
 
-export const ButtonCancel = Styled(RectButton)`
+export const ButtonCancel = Styled.TouchableOpacity.attrs({
+  activeOpacity: 0.6,
+})`
     height: 40px;
     width: 132px;
+    /* border: 5px solid #212121; */
     border-width: 1px;
-  border-color: #424242;
+    border-color: #424242;
     justify-content: center;
     align-items: center;
     margin-right: 8px;
+
     `;
 
 export const ButtonCancelText = Styled.Text`
