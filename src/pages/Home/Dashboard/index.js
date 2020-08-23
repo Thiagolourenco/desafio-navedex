@@ -36,12 +36,16 @@ export default function Dashboard() {
     navigation.navigate("Profile");
   }
 
+  function handleEditProfile() {
+    navigation.navigate("EditProfile");
+  }
+
   return (
     <Container>
       <Header iconName="menu" onPress={() => navigation.openDrawer()} />
       <HeaderButton>
         <TitleNavers>Navers</TitleNavers>
-        <ButtonAddNave>
+        <ButtonAddNave onPress={() => navigation.navigate("AddNaver")}>
           <ButtonAddNaveText>Adicionar naver</ButtonAddNaveText>
         </ButtonAddNave>
       </HeaderButton>
@@ -61,7 +65,7 @@ export default function Dashboard() {
               <ButtonRemove onPress={handleModalVisible}>
                 <Ionicons name="md-trash" size={24} color="#212121" />
               </ButtonRemove>
-              <ButtonEdit onPress={() => {}}>
+              <ButtonEdit onPress={handleEditProfile}>
                 <Icon name="edit" color="#212121" size={24} />
               </ButtonEdit>
             </GroupButton>

@@ -28,7 +28,7 @@ export const TextData = Styled.Text`
     color: #212121;
     font-weight: 600;
     line-height: 24px;
-    margin-top: 20
+    margin-top: 20px;
 
 `;
 
