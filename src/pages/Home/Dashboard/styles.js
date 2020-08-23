@@ -43,7 +43,9 @@ export const ListViewContent = Styled.View`
     margin-top: 30px;
 `;
 
-export const ImageView = Styled.View`
+export const ImageView = Styled.TouchableOpacity.attrs({
+  activeOpacity: 0.7,
+})`
     height: 170px;
     width: 156.56px;
     background: #ccc;

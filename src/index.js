@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import AuthenticationStack from "./pages/Authentication/routes";
 import DrawerHome from "./pages/Home/routesDrawer";
+import StackHome from "./pages/Home/routes";
 
 const Stack = createStackNavigator();
 
@@ -16,7 +17,7 @@ export default function Index() {
       />
       <Stack.Screen
         name="Home"
-        component={DrawerHome}
+        component={StackHome}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

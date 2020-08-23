@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, FlatList } from "react-native";
+import { FlatList } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons as Icon } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { RectButton } from "react-native-gesture-handler";
 
 import { Header, ModalRemove } from "../components";
 
@@ -33,6 +32,10 @@ export default function Dashboard() {
     setModal(true);
   }
 
+  function handleProfile() {
+    navigation.navigate("Profile");
+  }
+
   return (
     <Container>
       <Header iconName="menu" onPress={() => navigation.openDrawer()} />
@@ -46,9 +49,10 @@ export default function Dashboard() {
       <FlatList
         data={data}
         numColumns="2"
+        keyExtractor={(item) => String(item)}
         renderItem={({ item }) => (
           <ListViewContent>
-            <ImageView />
+            <ImageView onPress={handleProfile} />
             <ListViewContentText>Juliano Reis</ListViewContentText>
             <ListViewContentTextSubTitle>
               Front-end Developer
