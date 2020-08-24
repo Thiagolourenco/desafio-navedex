@@ -65,7 +65,9 @@ export const ButtonCancelText = Styled.Text`
     font-weight: 600;
 `;
 
-export const ButtonRemove = Styled(RectButton)`
+export const ButtonRemove =Styled.TouchableOpacity.attrs({
+    activeOpacity: 0.6,
+  })`
     height: 40px;
     width: 132px;
     background-color: #212121;

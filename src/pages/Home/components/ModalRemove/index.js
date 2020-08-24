@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, View, Text, TouchableOpacity } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 
@@ -14,8 +14,16 @@ import {
   ButtonRemove,
   ButtonRemoveText,
 } from "./styles";
+import ModalFeedBack from '../ModalFeedBack'
 
 export default function ModalRemove({ visible, onRequestClose }) {
+  const [modal, setModal] = useState(false);
+
+  function handleRemoveNaver() {
+    // onRequestClose();
+    setModal(true)
+  }
+
   return (
     <Modal
       visible={visible}
@@ -39,11 +47,13 @@ export default function ModalRemove({ visible, onRequestClose }) {
             <ButtonCancel onPress={onRequestClose}>
               <ButtonCancelText>Cancelar</ButtonCancelText>
             </ButtonCancel>
-            <ButtonRemove>
+            <ButtonRemove onPress={handleRemoveNaver}>
               <ButtonRemoveText>Excluir</ButtonRemoveText>
             </ButtonRemove>
           </ButtonGroupModal>
         </Content>
+        <ModalFeedBack visible={modal} onRequestClose={() => setModal(false)} type="excluido"/>
+
       </Container>
     </Modal>
   );

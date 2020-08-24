@@ -28,6 +28,10 @@ export default function Profile() {
     setModal(true);
   }
 
+  function handleEditProfile() {
+    navigation.navigate("EditProfile");
+  }
+
   return (
     <Container>
       <Header iconName="chevron-left" onPress={() => navigation.goBack()} />
@@ -48,7 +52,7 @@ export default function Profile() {
 
           <ButtonCancelText>Excluir</ButtonCancelText>
         </ButtonCancel>
-        <ButtonEdit>
+        <ButtonEdit onPress={handleEditProfile}>
           <Icon name="edit" color="#ffffff" size={24} />
 
           <ButtonEditText>Editar</ButtonEditText>

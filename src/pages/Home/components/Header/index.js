@@ -12,7 +12,9 @@ export default function Header({ iconName, onPress }) {
       <BorderlessButton {...{ onPress }}>
         <Icon name={iconName} size={30} color="#212121" />
       </BorderlessButton>
-      <LogoSvg />
+      <View style={{ marginRight: 40 }}>
+        <LogoSvg />
+      </View>
       <Icon name="" size={30} color="#212121" />
     </Container>
   );
