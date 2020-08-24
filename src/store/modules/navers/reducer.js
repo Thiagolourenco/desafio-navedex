@@ -86,6 +86,25 @@ export default function auth(state = INITIAL_STATE, action) {
         break;
       }
 
+      case "@navers/NAVERS_CREATE_REQUEST": {
+        draft.loading = true;
+        break;
+      }
+
+      case "@navers/NAVERS_CREATE_SUCCESS": {
+        // draft.error = action.payload.error;
+        draft.loading = false;
+        draft.update = action.payload.data;
+        break;
+      }
+
+      case "@navers/NAVERS_CREATE_FAILURE": {
+        draft.error = action.payload.error;
+        draft.loading = false;
+        break;
+      }
+
+
       default:
         draft.loading = false;
         break;

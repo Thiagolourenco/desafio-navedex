@@ -1,7 +1,12 @@
 import { all, call, takeLatest, put } from "redux-saga/effects";
 
 import api from "../../../services/api";
-import { NaversSuccess, NaversShowSuccess, NaversUpdateSuccess } from "./actions";
+import {
+  NaversSuccess,
+  NaversShowSuccess,
+  NaversUpdateSuccess,
+  NaversCreateSuccess,
+} from "./actions";
 
 export function* navers({ payload }) {
   try {
@@ -35,20 +40,39 @@ export function* naversRemove({ payload }) {
 
 export function* naversUpdate({ payload }) {
   try {
-      const obj = {
-        job_role: payload.cargo,
-        admission_date: payload.tempoempresa,
-        birthdate: payload.idade,
-        project: payload.projetoparticipou,
-        name: payload.name,
-        url: payload.url
-      }
+    const obj = {
+      job_role: payload.cargo,
+      admission_date: payload.tempoempresa,
+      birthdate: payload.idade,
+      project: payload.projetoparticipou,
+      name: payload.name,
+      url: payload.url,
+    };
 
-      const response = yield call(api.put, `/navers/${payload.id}`, obj)
+    const response = yield call(api.put, `/navers/${payload.id}`, obj);
 
-      yield put(NaversUpdateSuccess(response.data))
+    yield put(NaversUpdateSuccess(response.data));
   } catch (error) {
     console.log("ERRO", error);
+  }
+}
+
+export function* naversCreate({ payload }) {
+  try {
+    const obj = {
+      job_role: payload.cargo,
+      admission_date: payload.tempoempresa,
+      birthdate: payload.idade,
+      project: payload.projetoparticipou,
+      name: payload.name,
+      url: payload.url,
+    };
+
+    const response = yield call(api.post, "navers", obj);
+
+    yield put(NaversCreateSuccess(response.data));
+  } catch (error) {
+    console.log("ERROR", error);
   }
 }
 
@@ -57,4 +81,5 @@ export default all([
   takeLatest("@navers/NAVERS_REMOVE_REQUEST", naversRemove),
   takeLatest("@navers/NAVERS_SHOW_REQUEST", naversShow),
   takeLatest("@navers/NAVERS_UPDATE_REQUEST", naversUpdate),
+  takeLatest("@navers/NAVERS_CREATE_REQUEST", naversCreate),
 ]);

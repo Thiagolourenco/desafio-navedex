@@ -93,3 +93,32 @@ export function NaversUpdateFailure(error) {
     payload: { error },
   };
 }
+
+export function NaversCreateRequest(
+    name,
+    cargo,
+    idade,
+    tempoempresa,
+    projetoparticipou,
+    url
+  ) {
+    return {
+      type: "@navers/NAVERS_CREATE_REQUEST",
+      payload: { name, cargo, idade, tempoempresa, projetoparticipou, url },
+    };
+  }
+  
+  export function NaversCreateSuccess(data) {
+    return {
+      type: "@navers/NAVERS_CREATE_SUCCESS",
+      payload: { data },
+    };
+  }
+  
+  export function NaversCreateFailure(error) {
+    return {
+      type: "@navers/NAVERS_CREATE_FAILURE",
+      payload: { error },
+    };
+  }
+  
