@@ -14,14 +14,14 @@ import {
   ButtonRemove,
   ButtonRemoveText,
 } from "./styles";
-import ModalFeedBack from '../ModalFeedBack'
+import ModalFeedBack from "../ModalFeedBack";
 
-export default function ModalRemove({ visible, onRequestClose }) {
+export default function ModalRemove({ visible, onRequestClose, onPress }) {
   const [modal, setModal] = useState(false);
 
   function handleRemoveNaver() {
     // onRequestClose();
-    setModal(true)
+    setModal(true);
   }
 
   return (
@@ -47,13 +47,16 @@ export default function ModalRemove({ visible, onRequestClose }) {
             <ButtonCancel onPress={onRequestClose}>
               <ButtonCancelText>Cancelar</ButtonCancelText>
             </ButtonCancel>
-            <ButtonRemove onPress={handleRemoveNaver}>
+            <ButtonRemove {...{ onPress }}>
               <ButtonRemoveText>Excluir</ButtonRemoveText>
             </ButtonRemove>
           </ButtonGroupModal>
         </Content>
-        <ModalFeedBack visible={modal} onRequestClose={() => setModal(false)} type="excluido"/>
-
+        <ModalFeedBack
+          visible={modal}
+          onRequestClose={() => setModal(false)}
+          type="excluido"
+        />
       </Container>
     </Modal>
   );

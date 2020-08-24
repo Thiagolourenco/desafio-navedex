@@ -3,9 +3,11 @@ import { Feather as Icon } from "@expo/vector-icons";
 import { BorderlessButton } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import { DrawerActions } from "@react-navigation/drawer";
+import { useDispatch } from 'react-redux'
 
 import { Container, Header, Content } from "./styles";
 import DrawerItem from "../DrawerItem";
+import {signOut} from '../../../../store/modules/auth/actions'
 
 export default function CustomDrawer({ navigation }) {
   const data = [
@@ -17,11 +19,22 @@ export default function CustomDrawer({ navigation }) {
     {
       id: 2,
       name: "Sair",
-      screen: "DrawerHome",
+      screen: "Sair",
     },
   ];
+
+  const dispatch = useDispatch();
+
   function closeMenuDrawer() {
     navigation.closeDrawer();
+  }
+
+  function handleDrawer(item) {
+    if(item == 'Sair') {
+      dispatch(signOut())
+    }else {
+      navigation.navigate(item)
+    }
   }
 
   return (
@@ -39,7 +52,7 @@ export default function CustomDrawer({ navigation }) {
           <DrawerItem
             key={item.id}
             name={item.name}
-            onPress={() => navigation.navigate(item.screen)}
+            onPress={() => handleDrawer(item.screen)}
           />
         ))}
       </Content>

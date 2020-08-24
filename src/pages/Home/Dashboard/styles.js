@@ -53,6 +53,11 @@ export const ImageView = Styled.TouchableOpacity.attrs({
     margin-top: 30px; */
 `;
 
+export const ImageV = Styled.Image`
+    width: 100%;
+    height: 100%;
+`;
+
 export const ListViewContentText = Styled.Text`
     font-size: 14px;
     color: #212121;
