@@ -1,9 +1,13 @@
 import "react-native-gesture-handler";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 // import { useFonts,} from "@expo-google-fonts/inter";
 // import { useFonts } from 'expo-font'
+import "./src/config/ReactotronConfig";
 import Index from "./src";
+import { store, persistor } from "./src/store";
 
 export default function App() {
   // let [fontsLoaded] = useFonts({
@@ -14,7 +18,11 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Index />
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <Index />
+        </PersistGate>
+      </Provider>
     </NavigationContainer>
   );
 }

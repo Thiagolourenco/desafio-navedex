@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch, useSelector } from 'react-redux'
 
 import { LogoSvg } from "../../../components";
 
@@ -12,6 +13,7 @@ import {
   ButtonLogin,
   ButtonLoginText,
 } from "./styles";
+import { AuthenticationRequest } from '../../../store/modules/auth/actions'
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -20,9 +22,10 @@ export default function Login() {
   const passwordRef = useRef(null);
 
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   function handleSignIn() {
-    navigation.navigate("Home");
+    dispatch(AuthenticationRequest(email, password))
   }
 
   return (
