@@ -10,7 +10,7 @@ export const Content = Styled.View`
     margin-left: 15px;
 `;
 
-export const ImageProfile = Styled.View`
+export const ImageProfile = Styled.Image`
     height: 280px;
     width: 100%;
     background: #ccc;
@@ -83,3 +83,8 @@ export const ButtonEditText = Styled.Text`
       font-weight: 600;
       margin-left: 8px;
   `;
+
+export const Indicator = Styled.View`
+    justify-content: center;
+    align-items: center;
+`;

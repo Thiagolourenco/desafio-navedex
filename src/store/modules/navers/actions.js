@@ -21,7 +21,7 @@ export function NaversFailure(error) {
 // remove
 
 export function NaversRemoveRequest(id) {
-    console.log('ID', id)
+  console.log("ID", id);
   return {
     type: "@navers/NAVERS_REMOVE_REQUEST",
     payload: { id },
@@ -38,6 +38,58 @@ export function NaversRemoveSuccess(data) {
 export function NaversRemoveFailure(error) {
   return {
     type: "@navers/NAVERS_REMOVE_FAILURE",
+    payload: { error },
+  };
+}
+
+// show
+export function NaversShowRequest(id) {
+  return {
+    type: "@navers/NAVERS_SHOW_REQUEST",
+    payload: { id },
+  };
+}
+
+export function NaversShowSuccess(data) {
+  return {
+    type: "@navers/NAVERS_SHOW_SUCCESS",
+    payload: { data },
+  };
+}
+
+export function NaversShowFailure(error) {
+  return {
+    type: "@navers/NAVERS_SHOW_FAILURE",
+    payload: { error },
+  };
+}
+
+//update
+export function NaversUpdateRequest(
+  id,
+  name,
+  cargo,
+  idade,
+  tempoempresa,
+  projetoparticipou,
+  url
+) {
+  return {
+    type: "@navers/NAVERS_UPDATE_REQUEST",
+    payload: { id, name, cargo, idade, tempoempresa, projetoparticipou, url },
+  };
+}
+
+export function NaversUpdateSuccess(data) {
+  return {
+    type: "@navers/NAVERS_UPDATE_SUCCESS",
+    payload: { data },
+  };
+}
+
+export function NaversUpdateFailure(error) {
+  return {
+    type: "@navers/NAVERS_UPDATE_FAILURE",
     payload: { error },
   };
 }

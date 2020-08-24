@@ -48,8 +48,8 @@ export default function Dashboard() {
     setRemoveId(id);
   }
 
-  function handleProfile() {
-    navigation.navigate("Profile");
+  function handleProfile(id) {
+    navigation.navigate("Profile", { id });
   }
 
   function handleEditProfile() {
@@ -72,7 +72,7 @@ export default function Dashboard() {
         keyExtractor={(item) => String(item)}
         renderItem={({ item }) => (
           <ListViewContent>
-            <ImageView onPress={handleProfile}>
+            <ImageView onPress={() => handleProfile(item.id)}>
               <ImageV source={{ uri: item.url }} />
             </ImageView>
             <ListViewContentText>{item.name}</ListViewContentText>

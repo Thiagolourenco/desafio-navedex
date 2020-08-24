@@ -6,6 +6,9 @@ const INITIAL_STATE = {
   error: null,
   modal: false,
   loadingRemove: false,
+  loadingProfile: false,
+  user: [],
+  update: null
 };
 
 export default function auth(state = INITIAL_STATE, action) {
@@ -43,6 +46,43 @@ export default function auth(state = INITIAL_STATE, action) {
       case "@navers/NAVERS_REMOVE_FAILURE": {
         draft.error = action.payload.error;
         draft.loadingRemove = false;
+        break;
+      }
+
+      case "@navers/NAVERS_SHOW_REQUEST": {
+        draft.loadingProfile = true;
+        break;
+      }
+
+      case "@navers/NAVERS_SHOW_SUCCESS": {
+        // draft.error = action.payload.error;
+        draft.loadingProfile = false;
+        draft.user = action.payload.data;
+        break;
+      }
+
+      case "@navers/NAVERS_SHOW_FAILURE": {
+        draft.error = action.payload.error;
+        draft.loadingProfile = false;
+        break;
+      }
+
+      case "@navers/NAVERS_UPDATE_REQUEST": {
+        draft.loading = true;
+        break;
+      }
+
+      case "@navers/NAVERS_UPDATE_SUCCESS": {
+        // draft.error = action.payload.error;
+        draft.loading = false;
+        draft.update = action.payload.data;
+        draft.modal = true;
+        break;
+      }
+
+      case "@navers/NAVERS_UPDATE_FAILURE": {
+        draft.error = action.payload.error;
+        draft.loading = false;
         break;
       }
 

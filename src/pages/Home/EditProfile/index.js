@@ -1,9 +1,15 @@
-import React, { useState, useRef } from "react";
-import { View, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import React, { useState, useRef, useEffect } from "react";
+import { View, Text, ActivityIndicator } from "react-native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { useSelector, useDispatch } from "react-redux";
 
 import { Header, ModalFeedBack } from "../components";
+import {
+  NaversShowRequest,
+  NaversRemoveRequest,
+  NaversUpdateRequest,
+} from "../../../store/modules/navers/actions";
 
 import {
   Container,
@@ -16,15 +22,13 @@ import {
 } from "./styles";
 
 export default function EditProfile() {
-  const [name, setName] = useState("Fulano");
-  const [cargo, setCargo] = useState("Dev");
-  const [idade, setIdade] = useState("19");
-  const [tempoEmpresa, setTempoEmpresa] = useState("2 anos");
-  const [projetosParcipou, setProjetosParcipou] = useState(
-    "Desenvolver um app"
-  );
-  const [urlPhoto, setUrlPhoto] = useState("Nenhuma");
-  const [modal, setModal] = useState(false);
+  const [name, setName] = useState("");
+  const [cargo, setCargo] = useState("");
+  const [idade, setIdade] = useState("");
+  const [tempoEmpresa, setTempoEmpresa] = useState("");
+  const [projetosParcipou, setProjetosParcipou] = useState("");
+  const [urlPhoto, setUrlPhoto] = useState("");
+  const [modal, setModal] = useState(true);
 
   const nameRef = useRef(null);
   const cargoRef = useRef(null);
@@ -33,10 +37,42 @@ export default function EditProfile() {
   const projetosParcipouRef = useRef(null);
   const urlPhotoRef = useRef(null);
 
+  const routes = useRoute();
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
+  const userInfo = useSelector((state) => state.navers.user);
+  const modalInfo = useSelector((state) => state.navers.modal);
+  const loading = useSelector((state) => state.navers.loading);
+
+  const profileId = routes.params.profileId;
+
+  useEffect(() => {
+    setName(userInfo.name);
+    setCargo(userInfo.job_role);
+    setIdade(userInfo.birthdate);
+    setTempoEmpresa(userInfo.admission_date);
+    setProjetosParcipou(userInfo.project);
+    setUrlPhoto(userInfo.url);
+    setModal(modalInfo);
+  }, [userInfo]);
+
+  useEffect(() => {
+    dispatch(NaversShowRequest(profileId));
+  }, []);
 
   function handleEditNaver() {
-    setModal(true)
+    dispatch(
+      NaversUpdateRequest(
+        profileId,
+        name,
+        cargo,
+        idade,
+        tempoEmpresa,
+        projetosParcipou,
+        urlPhoto
+      )
+    );
   }
 
   return (
@@ -95,11 +131,22 @@ export default function EditProfile() {
           />
         </Content>
         <ButtonSave onPress={handleEditNaver}>
-          <ButtonSaveText>Salvar</ButtonSaveText>
+          {loading ? (
+            <ActivityIndicator size="small" color="#fff" />
+          ) : (
+            <ButtonSaveText>Salvar</ButtonSaveText>
+          )}
         </ButtonSave>
       </KeyboardAwareScrollView>
-      <ModalFeedBack visible={modal} onRequestClose={() => setModal(false)} type="editado"/>
-
+      {loading ? (
+        <ModalFeedBack
+          visible={modal}
+          onRequestClose={() => setModal(false)}
+          type="editado"
+        />
+      ) : (
+        <View />
+      )}
     </Container>
   );
 }
