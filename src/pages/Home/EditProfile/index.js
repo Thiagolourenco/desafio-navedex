@@ -1,14 +1,17 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import { View, Text, ActivityIndicator } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useSelector, useDispatch } from "react-redux";
+import {format} from 'date-fns';
+import pt from 'date-fns/locale/pt';
 
 import { Header, ModalFeedBack } from "../components";
 import {
   NaversShowRequest,
   NaversRemoveRequest,
   NaversUpdateRequest,
+  NaversCloseModalFeed
 } from "../../../store/modules/navers/actions";
 import api from '../../../services/api'
 
@@ -30,7 +33,7 @@ export default function EditProfile() {
   const [admission_date, setTempoEmpresa] = useState("");
   const [project, setProjetosParcipou] = useState("");
   const [url, setUrlPhoto] = useState("");
-  const [modal, setModal] = useState(true);
+  // const [modal, setModal] = useState(true);
 
   const nameRef = useRef(null);
   const cargoRef = useRef(null);
@@ -46,55 +49,55 @@ export default function EditProfile() {
   const userInfo = useSelector((state) => state.navers.user);
   const modalInfo = useSelector((state) => state.navers.modal);
   const loading = useSelector((state) => state.navers.loading);
+  const modal = useSelector((state) => state.navers.modalFeed);
 
   const profileId = routes.params.profileId;
 
+  const dataBirthdate = userInfo.birthdate;
+  const dataJobRole = userInfo.birthdate;
+
+  const dataFormatedBirthdate = useMemo(
+    () => format(new Date(dataBirthdate), 'dd/MM/yyyy', {locale: pt}),
+    [dataBirthdate],
+  );
+
+  const dataFormatedJobRole = useMemo(
+    () => format(new Date(dataJobRole), 'dd/MM/yyyy', {locale: pt}),
+    [dataJobRole],
+  );
+
+  
   useEffect(() => {
+
     setName(userInfo.name);
     setCargo(userInfo.job_role);
-    setIdade(userInfo.birthdate);
-    setTempoEmpresa(userInfo.admission_date);
+    setIdade(dataFormatedBirthdate);
+    setTempoEmpresa(dataFormatedJobRole);
     setProjetosParcipou(userInfo.project);
     setUrlPhoto(userInfo.url);
-    setModal(modalInfo);
-  }, [userInfo]);
+    // setModal(modalInfo);
+
+
+
+    console.log("userInfo", userInfo)
+  }, [userInfo, dataFormatedBirthdate, dataFormatedJobRole]);
 
   useEffect(() => {
     dispatch(NaversShowRequest(profileId));
   }, []);
 
   async function handleEditNaver() {
-    const obj = {
-      job_role: job_role,
-      admission_date: admission_date,
-      birthdate: birthdate,
-      project:project,
-      name: name,
-      url: url
-    }
-
-    const objTest = {
-      "job_role": "Desenvolvedor Mobile",
-      "admission_date": "19/08/2018",
-      "birthdate": "12/04/1992",
-      "project": "Project Backend Test",
-      "name": "Joao",
-      "url": "teste-path/image-test.png"
-    }
-
-    console.log("OBJ", obj)
-    await api.put(`/navers/${profileId}`, objTest).then(res => console.log(res)).catch(err => console.log(err))
-    // dispatch(
-    //   NaversUpdateRequest(
-    //     profileId,
-    //     name,
-    //     cargo,
-    //     idade,
-    //     tempoEmpresa,
-    //     projetosParcipou,
-    //     urlPhoto
-    //   )
-    // );
+   dispatch(
+      NaversUpdateRequest(
+        profileId,
+        name,
+        job_role,
+        birthdate,
+        admission_date,
+        project,
+        url
+      )
+    );
   }
 
   return (
@@ -160,15 +163,12 @@ export default function EditProfile() {
           )}
         </ButtonSave>
       </KeyboardAwareScrollView>
-      {loading ? (
-        <ModalFeedBack
-          visible={modal}
-          onRequestClose={() => setModal(false)}
+      <ModalFeedBack
+        visibles={modal}
+        onRequestCloses={() => dispatch(NaversCloseModalFeed())}
           type="editado"
         />
-      ) : (
-        <View />
-      )}
+     
     </Container>
   );
 }

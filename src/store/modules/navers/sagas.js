@@ -6,6 +6,7 @@ import {
   NaversShowSuccess,
   NaversUpdateSuccess,
   NaversCreateSuccess,
+  NaversCreateFailure,
   NaversCloseModal,
   NaversRemoveSuccess,
   NaversOpenModal,
@@ -51,17 +52,18 @@ export function* naversUpdate({ payload }) {
       job_role: payload.cargo,
       admission_date: payload.tempoempresa,
       birthdate: payload.idade,
-      project: payload.projetoparticipou,
       name: payload.name,
+      project: payload.projetoparticipou,
       url: payload.url,
     };
 
     const response = yield call(api.put, `/navers/${payload.id}`, obj);
 
     yield put(NaversUpdateSuccess(response.data));
+    yield put(NaversOpenModalFeed())
   } catch (error) {
     console.log("ERRO", error);
-    yield put(NaversUpdateFailure(error))
+    yield put(NaversUpdateFailure(error));
   }
 }
 
@@ -76,12 +78,13 @@ export function* naversCreate({ payload }) {
       url: payload.url,
     };
 
-    const response = yield call(api.post, "navers", obj);
+    const response = yield call(api.post, "/navers", obj);
 
     yield put(NaversCreateSuccess(response.data));
     yield put(NaversOpenModalFeed());
   } catch (error) {
     console.log("ERROR", error);
+    yield put(NaversCreateFailure(error))
   }
 }
 

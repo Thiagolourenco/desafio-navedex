@@ -5,10 +5,12 @@ import { MaterialIcons as Icon } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Header, ModalRemove } from "../components";
+import { Header, ModalRemove, DateFormated } from "../components";
 import {
   NaversShowRequest,
   NaversRemoveRequest,
+  NaversCloseModal,
+  NaversOpenModal
 } from "../../../store/modules/navers/actions";
 
 import {
@@ -28,8 +30,6 @@ import {
 import { colors } from '../../../constants/colors'
 
 export default function Profile() {
-  const [modal, setModal] = useState(false);
-
   const navigation = useNavigation();
   const routes = useRoute();
   const dispatch = useDispatch();
@@ -38,14 +38,15 @@ export default function Profile() {
 
   const userInfo = useSelector((state) => state.navers.user);
   const loading = useSelector((state) => state.navers.loadingProfile);
+  const modal = useSelector(state => state.navers.modal);
 
   useEffect(() => {
     dispatch(NaversShowRequest(profileId));
   }, []);
 
-  function handleModal() {
-    setModal(true);
-  }
+  // function handleModal() {
+  //   setModal(true);
+  // }
 
   function handleEditProfile() {
     navigation.navigate("EditProfile", { profileId });
@@ -66,6 +67,7 @@ export default function Profile() {
             <TextValues>{userInfo.job_role}</TextValues>
             <TextData>Idade</TextData>
             <TextValues>{userInfo.birthdate}</TextValues>
+            {/* <DateFormated data={userInfo.birthdate} /> */}
             <TextData>Tempo de empresa</TextData>
             <TextValues>{userInfo.admission_date}</TextValues>
             <TextData>Projetos que participou</TextData>
@@ -75,7 +77,7 @@ export default function Profile() {
       )}
 
       <GroupButton>
-        <ButtonCancel onPress={handleModal}>
+        <ButtonCancel onPress={() => dispatch(NaversOpenModal())}>
           <Ionicons name="md-trash" size={24} color={colors.primary} />
 
           <ButtonCancelText>Excluir</ButtonCancelText>
@@ -88,7 +90,7 @@ export default function Profile() {
       </GroupButton>
       <ModalRemove
         visible={modal}
-        onRequestClose={() => setModal(false)}
+        onRequestClose={() => dispatch(NaversCloseModal())}
         onPress={() => dispatch(NaversRemoveRequest(profileId))}
       />
     </Container>

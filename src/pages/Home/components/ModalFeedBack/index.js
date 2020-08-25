@@ -16,14 +16,6 @@ import { colors } from "../../../../constants/colors";
 export default function ModalFeedBack({ visibles, onRequestCloses, type }) {
   const dispatch = useDispatch();
 
-  //   useEffect(() => {
-  //     if (visibles === true) {
-  //       dispatch(NaversCloseModal());
-  //     }
-  //     console.log("VISIBLE => ", visibles);
-  //     //
-  //   }, [visibles]);
-
   return (
     <Modal
       visible={visibles}

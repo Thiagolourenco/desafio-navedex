@@ -3,7 +3,7 @@ import Styled from "styled-components/native";
 import { colors } from "../../../../constants/colors";
 
 export const Container = Styled.View`
-     flex: 1;
+    flex: 1;
     background-color: rgba(0,0,0,0.7);
     justify-content: center;
     align-items: center;
@@ -37,5 +37,4 @@ export const ContentValues = Styled.Text`
     width: 279px;
     align-self: center;
     margin-top: 15px;    
-
 `;

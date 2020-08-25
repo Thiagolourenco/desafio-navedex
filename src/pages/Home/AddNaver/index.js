@@ -130,7 +130,7 @@ export default function AddNaver() {
         </Content>
         <ButtonSave onPress={handleCreateNavers}>
           {loading ? (
-            <ActivityIndicator size="small" color={colors.colors} />
+            <ActivityIndicator size="small" color={colors.white} />
           ) : (
             <ButtonSaveText>Salvar</ButtonSaveText>
           )}

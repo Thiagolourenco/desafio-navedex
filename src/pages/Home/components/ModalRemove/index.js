@@ -20,17 +20,10 @@ import { NaversCloseModalFeed } from "../../../../store/modules/navers/actions";
 import { colors } from "../../../../constants/colors";
 
 export default function ModalRemove({ visible, onRequestClose, onPress }) {
-  // const [modal, setModal] = useState(false);
 
   const dispatch = useDispatch();
   const modal = useSelector((state) => state.navers.modalFeed);
 
-  function handleRemoveNaver() {
-    // onRequestClose();
-    setModal(true);
-  }
-
-  console.log("MODA", modal);
   return (
     <Modal
       visible={visible}

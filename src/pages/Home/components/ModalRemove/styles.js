@@ -13,7 +13,7 @@ export const Container = Styled.View`
 export const Content = Styled.View`
     height: 208px;
     width: 328px;
-    background-color: ${colors.shite};
+    background-color: ${colors.white};
     box-shadow: 0px 2px 4px rgba(33, 33, 33, 0.25);
 `;
 
@@ -67,9 +67,9 @@ export const ButtonCancelText = Styled.Text`
     font-weight: 600;
 `;
 
-export const ButtonRemove =Styled.TouchableOpacity.attrs({
-    activeOpacity: 0.6,
-  })`
+export const ButtonRemove = Styled.TouchableOpacity.attrs({
+  activeOpacity: 0.6,
+})`
     height: 40px;
     width: 132px;
     background-color: ${colors.primary};

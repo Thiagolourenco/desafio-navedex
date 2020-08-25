@@ -1,6 +1,6 @@
 export const colors = {
   primary: "#212121",
   borderColor: "#424242",
-  white: "#FFFFFF",
+  white: "#ffffff",
   headerColor: "#fafafa",
 };
