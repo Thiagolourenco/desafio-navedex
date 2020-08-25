@@ -11,12 +11,13 @@ import { MaterialIcons as Icon } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Header, ModalRemove } from "../components";
+import { Header, ModalRemove, ModalFeedBack } from "../components";
 import {
   NaversRequest,
   NaversRemoveRequest,
   NaversCloseModal,
   NaversOpenModal,
+  NaversCloseModalFeed,
 } from "../../../store/modules/navers/actions";
 
 import {
@@ -35,7 +36,7 @@ import {
   ImageV,
   Indicator,
 } from "./styles";
-import { colors } from '../../../constants/colors'
+import { colors } from "../../../constants/colors";
 
 export default function Dashboard() {
   // const [modal, setModal] = useState(false);
@@ -47,25 +48,16 @@ export default function Dashboard() {
   const naversData = useSelector((state) => state.navers.data);
   const modal = useSelector((state) => state.navers.modal);
   const loading = useSelector((state) => state.navers.loading);
+  const modalFeed = useSelector((state) => state.navers.modalFeed);
 
   useEffect(() => {
-    if (modal === false) {
-      const navers = navigation.addListener("focus", () => {
-        dispatch(NaversRequest());
-      });
-      console.log(modal, "TRUE");
-      return navers;
-    } else {
-      console.log(modal, "FALSE");
-
-      const navers = navigation.addListener("focus", () => {
-        dispatch(NaversRequest());
-      });
-      return navers;
-    }
+    const navers = navigation.addListener("focus", () => {
+      dispatch(NaversRequest());
+    });
+    return navers;
 
     // dispatch(NaversRequest());
-  }, [navigation, naversData, modal]);
+  }, [navigation, naversData]);
 
   function handleModalVisible(id) {
     dispatch(NaversOpenModal());
@@ -77,7 +69,7 @@ export default function Dashboard() {
   }
 
   function handleEditProfile(profileId) {
-    navigation.navigate("EditProfile" ,{ profileId });
+    navigation.navigate("EditProfile", { profileId });
   }
 
   function _onRefreshs() {
@@ -121,7 +113,7 @@ export default function Dashboard() {
               </ListViewContentTextSubTitle>
               <GroupButton>
                 <ButtonRemove onPress={() => handleModalVisible(item.id)}>
-                  <Ionicons name="md-trash" size={24} color={colors.primary}/>
+                  <Ionicons name="md-trash" size={24} color={colors.primary} />
                 </ButtonRemove>
                 <ButtonEdit onPress={() => handleEditProfile(item.id)}>
                   <Icon name="edit" color={colors.primary} size={24} />
@@ -136,6 +128,12 @@ export default function Dashboard() {
         visible={modal}
         onRequestClose={() => dispatch(NaversCloseModal())}
         onPress={() => dispatch(NaversRemoveRequest(removeId))}
+      />
+
+      <ModalFeedBack
+        visibles={modalFeed}
+        onRequestCloses={() => dispatch(NaversCloseModalFeed())}
+        type="excluido"
       />
     </Container>
   );

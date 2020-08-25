@@ -89,4 +89,5 @@ export const ButtonEditText = Styled.Text`
 export const Indicator = Styled.View`
     justify-content: center;
     align-items: center;
+    flex: 1;
 `;

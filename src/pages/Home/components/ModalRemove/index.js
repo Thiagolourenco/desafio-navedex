@@ -20,7 +20,6 @@ import { NaversCloseModalFeed } from "../../../../store/modules/navers/actions";
 import { colors } from "../../../../constants/colors";
 
 export default function ModalRemove({ visible, onRequestClose, onPress }) {
-
   const dispatch = useDispatch();
   const modal = useSelector((state) => state.navers.modalFeed);
 
@@ -52,11 +51,11 @@ export default function ModalRemove({ visible, onRequestClose, onPress }) {
             </ButtonRemove>
           </ButtonGroupModal>
         </Content>
-        <ModalFeedBack
+        {/* <ModalFeedBack
           visibles={modal}
           onRequestCloses={() => dispatch(NaversCloseModalFeed())}
           type="excluido"
-        />
+        /> */}
       </Container>
     </Modal>
   );

@@ -12,6 +12,7 @@ import {
   NaversOpenModal,
   NaversOpenModalFeed,
   NaversUpdateFailure,
+  NaversCloseModalProfile
 } from "./actions";
 
 export function* navers({ payload }) {
@@ -36,10 +37,13 @@ export function* naversShow({ payload }) {
 
 export function* naversRemove({ payload }) {
   try {
+
     const response = yield call(api.delete, `/navers/${payload.id}`);
 
     yield put(NaversRemoveSuccess(response.data));
-    // yield put(NaversCloseModal());
+    yield put(NaversCloseModalProfile());
+    yield put(NaversCloseModal())
+
     yield put(NaversOpenModalFeed());
   } catch (error) {
     console.log("ERROR", error);

@@ -10,6 +10,7 @@ const INITIAL_STATE = {
   user: [],
   update: null,
   modalFeed: false,
+  modalProfile: false,
 };
 
 export default function auth(state = INITIAL_STATE, action) {
@@ -77,7 +78,6 @@ export default function auth(state = INITIAL_STATE, action) {
         // draft.error = action.payload.error;
         draft.loading = false;
         draft.update = action.payload.data;
-        draft.modal = true;
         break;
       }
 
@@ -112,6 +112,16 @@ export default function auth(state = INITIAL_STATE, action) {
 
       case "@navers/NAVERS_CLOSE_MODAL": {
         draft.modal = false;
+        break;
+      }
+
+      case "@navers/NAVERS_OPEN_MODAL_PROFILE": {
+        draft.modalProfile = true;
+        break;
+      }
+
+      case "@navers/NAVERS_CLOSE_MODAL_PROFILE": {
+        draft.modalProfile = false;
         break;
       }
 

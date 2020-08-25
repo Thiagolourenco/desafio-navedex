@@ -136,6 +136,18 @@ export function NaversCloseModal() {
   };
 }
 
+export function NaversOpenModalProfile() {
+  return {
+    type: "@navers/NAVERS_OPEN_MODAL_PROFILE",
+  };
+}
+
+export function NaversCloseModalProfile() {
+  return {
+    type: "@navers/NAVERS_CLOSE_MODAL_PROFILE",
+  };
+}
+
 export function NaversOpenModalFeed() {
   return {
     type: "@navers/NAVERS_OPEN_MODAL_FEED",
