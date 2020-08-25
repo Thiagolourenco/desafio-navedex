@@ -25,6 +25,7 @@ import {
   ButtonEditText,
   Indicator,
 } from "./styles";
+import { colors } from '../../../constants/colors'
 
 export default function Profile() {
   const [modal, setModal] = useState(false);
@@ -55,7 +56,7 @@ export default function Profile() {
       <Header name="chevron-left" onPress={() => navigation.goBack()} />
       {loading ? (
         <Indicator>
-          <ActivityIndicator color="#212121" size="small" />
+          <ActivityIndicator color={colors.primary} size="small" />
         </Indicator>
       ) : (
         <>
@@ -75,12 +76,12 @@ export default function Profile() {
 
       <GroupButton>
         <ButtonCancel onPress={handleModal}>
-          <Ionicons name="md-trash" size={24} color="#212121" />
+          <Ionicons name="md-trash" size={24} color={colors.primary} />
 
           <ButtonCancelText>Excluir</ButtonCancelText>
         </ButtonCancel>
         <ButtonEdit onPress={handleEditProfile}>
-          <Icon name="edit" color="#ffffff" size={24} />
+          <Icon name="edit" color={colors.white} size={24} />
 
           <ButtonEditText>Editar</ButtonEditText>
         </ButtonEdit>

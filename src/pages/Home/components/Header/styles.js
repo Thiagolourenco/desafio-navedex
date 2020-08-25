@@ -1,7 +1,9 @@
 import Styled from "styled-components/native";
 
+import { colors } from "../../../../constants/colors";
+
 export const Container = Styled.View`
-    background-color: #fafafa;
+    background-color:${colors.headerColor};
     height: 84px;
     box-shadow: 0px 2px 4px rgba(33, 33, 33, 0.25);
     flex-direction: row;

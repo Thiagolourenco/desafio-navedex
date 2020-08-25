@@ -14,6 +14,7 @@ import {
   ButtonLogin,
   ButtonLoginText,
 } from "./styles";
+import { colors } from '../../../constants/colors'
 import { AuthenticationRequest } from "../../../store/modules/auth/actions";
 
 export default function Login() {
@@ -61,7 +62,7 @@ export default function Login() {
 
       <ButtonLogin onPress={handleSignIn}>
         {loading ? (
-          <ActivityIndicator size="small" color="#fff" />
+          <ActivityIndicator size="small" color={colors.white} />
         ) : (
           <ButtonLoginText>Entrar</ButtonLoginText>
         )}

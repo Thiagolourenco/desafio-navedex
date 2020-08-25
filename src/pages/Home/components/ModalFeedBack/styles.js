@@ -1,4 +1,6 @@
-import Styled from 'styled-components/native'
+import Styled from "styled-components/native";
+
+import { colors } from "../../../../constants/colors";
 
 export const Container = Styled.View`
      flex: 1;
@@ -10,7 +12,7 @@ export const Container = Styled.View`
 export const Content = Styled.View`
     height: 112px;
     width: 328px;
-    background-color: #fff;
+    background-color: ${colors.white};
     box-shadow: 0px 2px 4px rgba(33, 33, 33, 0.25);
 `;
 
@@ -26,12 +28,12 @@ export const ContentHeaderTitle = Styled.Text`
     font-size: 22px;
     font-weight: 900;
     line-height: 32px;
-    color: #212121;
+    color: ${colors.primary};
 `;
 
 export const ContentValues = Styled.Text`
     font-size: 16px;
-    color: #212121;
+    color: ${colors.primary};
     width: 279px;
     align-self: center;
     margin-top: 15px;    

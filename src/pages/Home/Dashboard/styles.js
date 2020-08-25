@@ -1,6 +1,8 @@
 import Styled from "styled-components/native";
 import { RectButton } from "react-native-gesture-handler";
 
+import { colors } from '../../../constants/colors'
+
 export const Container = Styled.View`
     flex: 1;
 `;
@@ -16,20 +18,20 @@ export const HeaderButton = Styled.View`
 export const TitleNavers = Styled.Text`
     font-size: 22px;
     font-weight: 600;
-    color: #212121;
+    color: ${colors.primary};
     line-height: 32px;
 `;
 
 export const ButtonAddNave = Styled(RectButton)`
     height: 40px;
     width: 155px;
-    background-color: #212121;
+    background-color: ${colors.primary};
     justify-content: center;
     align-items: center;
 `;
 
 export const ButtonAddNaveText = Styled.Text`
-    color: #fff;
+    color: ${colors.white};
     font-size: 14px;
     font-weight: 600;
     line-height: 24px;
@@ -60,14 +62,14 @@ export const ImageV = Styled.Image`
 
 export const ListViewContentText = Styled.Text`
     font-size: 14px;
-    color: #212121;
+    color: ${colors.primary};
     font-weight: 600;
     line-height: 20px;
 `;
 
 export const ListViewContentTextSubTitle = Styled.Text`
     font-size: 14px;
-    color: #212121;
+    color: ${colors.primary};
     font-weight: normal;
     line-height: 16px;
 `;

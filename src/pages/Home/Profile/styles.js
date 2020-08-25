@@ -1,6 +1,8 @@
 import Styled from "styled-components/native";
 import { RectButton } from "react-native-gesture-handler";
 
+import { colors } from '../../../constants/colors'
+
 export const Container = Styled.View`
     flex: 1;
 `;
@@ -20,12 +22,12 @@ export const TextName = Styled.Text`
     font-size: 22px;
     font-weight: 600;
     line-height: 32px;
-    color: #212121;
+    color: ${colors.primary};
 `;
 
 export const TextData = Styled.Text`
     font-size: 16px;
-    color: #212121;
+    color: ${colors.primary};
     font-weight: 600;
     line-height: 24px;
     margin-top: 20px;
@@ -34,7 +36,7 @@ export const TextData = Styled.Text`
 
 export const TextValues = Styled.Text`
     font-size: 16px;
-    color: #212121;
+    color:${colors.primary};
     line-height: 24px;
 `;
 
@@ -51,7 +53,7 @@ export const ButtonCancel = Styled.TouchableOpacity.attrs({
       width: 156px;
       /* border: 5px solid #212121; */
       border-width: 1px;
-      border-color: #424242;
+      border-color: ${colors.borderColor};
       justify-content: center;
       align-items: center;
       margin-right: 8px;
@@ -60,7 +62,7 @@ export const ButtonCancel = Styled.TouchableOpacity.attrs({
 
 export const ButtonCancelText = Styled.Text`
       font-size: 14px;
-      color: #212121;
+      color: ${colors.primary};
       font-weight: 600;
       margin-left: 8px;
 
@@ -69,7 +71,7 @@ export const ButtonCancelText = Styled.Text`
 export const ButtonEdit = Styled(RectButton)`
       height: 40px;
       width: 158px;
-      background-color: #212121;
+      background-color: ${colors.primary};
       justify-content: center;
       align-items: center;
       margin-left: 8px;
@@ -79,7 +81,7 @@ export const ButtonEdit = Styled(RectButton)`
 
 export const ButtonEditText = Styled.Text`
       font-size: 14px;
-      color: #fff;
+      color: ${colors.white};
       font-weight: 600;
       margin-left: 8px;
   `;

@@ -10,6 +10,7 @@ import {
   NaversRemoveSuccess,
   NaversOpenModal,
   NaversOpenModalFeed,
+  NaversUpdateFailure,
 } from "./actions";
 
 export function* navers({ payload }) {
@@ -58,9 +59,9 @@ export function* naversUpdate({ payload }) {
     const response = yield call(api.put, `/navers/${payload.id}`, obj);
 
     yield put(NaversUpdateSuccess(response.data));
-    yield put(NaversOpenModalFeed());
   } catch (error) {
     console.log("ERRO", error);
+    yield put(NaversUpdateFailure(error))
   }
 }
 

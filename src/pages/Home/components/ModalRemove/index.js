@@ -17,6 +17,7 @@ import {
 } from "./styles";
 import ModalFeedBack from "../ModalFeedBack";
 import { NaversCloseModalFeed } from "../../../../store/modules/navers/actions";
+import { colors } from "../../../../constants/colors";
 
 export default function ModalRemove({ visible, onRequestClose, onPress }) {
   // const [modal, setModal] = useState(false);
@@ -42,7 +43,7 @@ export default function ModalRemove({ visible, onRequestClose, onPress }) {
           <ContentHeader>
             <ContentHeaderTitle>Excluir naver</ContentHeaderTitle>
             <TouchableOpacity onPress={onRequestClose}>
-              <Icon name="x" color="#212121" size={28} />
+              <Icon name="x" color={colors.primary} size={28} />
             </TouchableOpacity>
           </ContentHeader>
           <ContentValues>

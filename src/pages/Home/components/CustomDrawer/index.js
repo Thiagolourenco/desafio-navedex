@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import { Container, Header, Content } from "./styles";
 import DrawerItem from "../DrawerItem";
 import {signOut} from '../../../../store/modules/auth/actions'
+import { colors } from '../../../../constants/colors'
 
 export default function CustomDrawer({ navigation }) {
   const data = [
@@ -44,7 +45,7 @@ export default function CustomDrawer({ navigation }) {
           onPress={closeMenuDrawer}
           style={{ marginLeft: 15, marginTop: 30, height: 40, width: 40 }}
         >
-          <Icon name="menu" size={30} color="#212121" />
+          <Icon name="menu" size={30} color={colors.primary} />
         </BorderlessButton>
       </Header>
       <Content>

@@ -35,6 +35,7 @@ import {
   ImageV,
   Indicator,
 } from "./styles";
+import { colors } from '../../../constants/colors'
 
 export default function Dashboard() {
   // const [modal, setModal] = useState(false);
@@ -75,8 +76,8 @@ export default function Dashboard() {
     navigation.navigate("Profile", { id });
   }
 
-  function handleEditProfile() {
-    navigation.navigate("EditProfile");
+  function handleEditProfile(profileId) {
+    navigation.navigate("EditProfile" ,{ profileId });
   }
 
   function _onRefreshs() {
@@ -95,14 +96,14 @@ export default function Dashboard() {
 
       {loading ? (
         <Indicator>
-          <ActivityIndicator size="large" color="#212121" />
+          <ActivityIndicator size="large" color={colors.primary} />
         </Indicator>
       ) : (
         <FlatList
           data={naversData}
           numColumns="2"
           style={{ marginBottom: 20 }}
-          keyExtractor={(item) => String(item)}
+          keyExtractor={(item) => String(item.id)}
           refreshControl={
             <RefreshControl
               refreshing={loading}
@@ -120,10 +121,10 @@ export default function Dashboard() {
               </ListViewContentTextSubTitle>
               <GroupButton>
                 <ButtonRemove onPress={() => handleModalVisible(item.id)}>
-                  <Ionicons name="md-trash" size={24} color="#212121" />
+                  <Ionicons name="md-trash" size={24} color={colors.primary}/>
                 </ButtonRemove>
-                <ButtonEdit onPress={handleEditProfile}>
-                  <Icon name="edit" color="#212121" size={24} />
+                <ButtonEdit onPress={() => handleEditProfile(item.id)}>
+                  <Icon name="edit" color={colors.primary} size={24} />
                 </ButtonEdit>
               </GroupButton>
             </ListViewContent>

@@ -11,6 +11,7 @@ import {
   ContentValues,
 } from "./styles";
 import { NaversCloseModal } from "../../../../store/modules/navers/actions";
+import { colors } from "../../../../constants/colors";
 
 export default function ModalFeedBack({ visibles, onRequestCloses, type }) {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ export default function ModalFeedBack({ visibles, onRequestCloses, type }) {
           <ContentHeader>
             <ContentHeaderTitle>Naver {type}</ContentHeaderTitle>
             <TouchableOpacity onPress={onRequestCloses}>
-              <Icon name="x" color="#212121" size={28} />
+              <Icon name="x" color={colors.primary} size={28} />
             </TouchableOpacity>
           </ContentHeader>
           <ContentValues>Naver {type} com sucesso!</ContentValues>

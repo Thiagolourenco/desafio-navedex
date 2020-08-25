@@ -3,7 +3,7 @@ import { all, takeLatest, call, put } from "redux-saga/effects";
 // @auth/AUTHENTICATION_REQUEST
 import api from "../../../services/api";
 
-import { AuthenticationSuccess } from "./actions";
+import { AuthenticationSuccess, AuthenticationFailure } from "./actions";
 
 export function* authentication({ payload }) {
   try {
@@ -22,6 +22,7 @@ export function* authentication({ payload }) {
     yield put(AuthenticationSuccess(token));
   } catch (error) {
     console.log("ERROR", error);
+    yield put(AuthenticationFailure());
   }
 }
 

@@ -21,6 +21,7 @@ import {
   ButtonSave,
   ButtonSaveText,
 } from "./styles";
+import { colors } from '../../../constants/colors'
 
 export default function AddNaver() {
   const [name, setName] = useState("");
@@ -129,7 +130,7 @@ export default function AddNaver() {
         </Content>
         <ButtonSave onPress={handleCreateNavers}>
           {loading ? (
-            <ActivityIndicator size="small" color="#fff" />
+            <ActivityIndicator size="small" color={colors.colors} />
           ) : (
             <ButtonSaveText>Salvar</ButtonSaveText>
           )}

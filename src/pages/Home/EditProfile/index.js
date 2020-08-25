@@ -9,9 +9,8 @@ import {
   NaversShowRequest,
   NaversRemoveRequest,
   NaversUpdateRequest,
-  NaversOpenModalFeed,
-  NaversCloseModalFeed,
 } from "../../../store/modules/navers/actions";
+import api from '../../../services/api'
 
 import {
   Container,
@@ -22,14 +21,16 @@ import {
   ButtonSave,
   ButtonSaveText,
 } from "./styles";
+import { colors } from '../../../constants/colors'
 
 export default function EditProfile() {
   const [name, setName] = useState("");
-  const [cargo, setCargo] = useState("");
-  const [idade, setIdade] = useState("");
-  const [tempoEmpresa, setTempoEmpresa] = useState("");
-  const [projetosParcipou, setProjetosParcipou] = useState("");
-  const [urlPhoto, setUrlPhoto] = useState("");
+  const [job_role, setCargo] = useState("");
+  const [birthdate, setIdade] = useState("");
+  const [admission_date, setTempoEmpresa] = useState("");
+  const [project, setProjetosParcipou] = useState("");
+  const [url, setUrlPhoto] = useState("");
+  const [modal, setModal] = useState(true);
 
   const nameRef = useRef(null);
   const cargoRef = useRef(null);
@@ -45,7 +46,6 @@ export default function EditProfile() {
   const userInfo = useSelector((state) => state.navers.user);
   const modalInfo = useSelector((state) => state.navers.modal);
   const loading = useSelector((state) => state.navers.loading);
-  const modal = useSelector((state) => state.navers.modalFeed);
 
   const profileId = routes.params.profileId;
 
@@ -56,24 +56,45 @@ export default function EditProfile() {
     setTempoEmpresa(userInfo.admission_date);
     setProjetosParcipou(userInfo.project);
     setUrlPhoto(userInfo.url);
+    setModal(modalInfo);
   }, [userInfo]);
 
   useEffect(() => {
     dispatch(NaversShowRequest(profileId));
   }, []);
 
-  function handleEditNaver() {
-    dispatch(
-      NaversUpdateRequest(
-        profileId,
-        name,
-        cargo,
-        idade,
-        tempoEmpresa,
-        projetosParcipou,
-        urlPhoto
-      )
-    );
+  async function handleEditNaver() {
+    const obj = {
+      job_role: job_role,
+      admission_date: admission_date,
+      birthdate: birthdate,
+      project:project,
+      name: name,
+      url: url
+    }
+
+    const objTest = {
+      "job_role": "Desenvolvedor Mobile",
+      "admission_date": "19/08/2018",
+      "birthdate": "12/04/1992",
+      "project": "Project Backend Test",
+      "name": "Joao",
+      "url": "teste-path/image-test.png"
+    }
+
+    console.log("OBJ", obj)
+    await api.put(`/navers/${profileId}`, objTest).then(res => console.log(res)).catch(err => console.log(err))
+    // dispatch(
+    //   NaversUpdateRequest(
+    //     profileId,
+    //     name,
+    //     cargo,
+    //     idade,
+    //     tempoEmpresa,
+    //     projetosParcipou,
+    //     urlPhoto
+    //   )
+    // );
   }
 
   return (
@@ -95,7 +116,7 @@ export default function EditProfile() {
           <Input
             ref={cargoRef}
             placeholder="Cargo"
-            value={cargo}
+            value={job_role}
             onChangeText={(value) => setCargo(value)}
             onSubmitEditing={() => idadeRef.current.focus()}
           />
@@ -103,7 +124,7 @@ export default function EditProfile() {
           <Input
             ref={idadeRef}
             placeholder="Idade"
-            value={idade}
+            value={birthdate}
             onChangeText={(value) => setIdade(value)}
             onSubmitEditing={() => tempoEmpresaRef.current.focus()}
           />
@@ -111,7 +132,7 @@ export default function EditProfile() {
           <Input
             ref={tempoEmpresaRef}
             placeholder="Tempo de empresa"
-            value={tempoEmpresa}
+            value={admission_date}
             onChangeText={(value) => setTempoEmpresa(value)}
             onSubmitEditing={() => projetosParcipouRef.current.focus()}
           />
@@ -119,7 +140,7 @@ export default function EditProfile() {
           <Input
             ref={projetosParcipouRef}
             placeholder="Projetos que participou"
-            value={projetosParcipou}
+            value={project}
             onChangeText={(value) => setProjetosParcipou(value)}
             onSubmitEditing={() => urlPhotoRef.current.focus()}
           />
@@ -127,23 +148,27 @@ export default function EditProfile() {
           <Input
             ref={urlPhotoRef}
             placeholder="URL da foto do naver"
-            value={urlPhoto}
+            value={url}
             onChangeText={(value) => setUrlPhoto(value)}
           />
         </Content>
         <ButtonSave onPress={handleEditNaver}>
           {loading ? (
-            <ActivityIndicator size="small" color="#fff" />
+            <ActivityIndicator size="small" color={colors.white} />
           ) : (
             <ButtonSaveText>Salvar</ButtonSaveText>
           )}
         </ButtonSave>
       </KeyboardAwareScrollView>
-      <ModalFeedBack
-        visibles={modal}
-        onRequestCloses={() => NaversCloseModalFeed(false)}
-        type="editado"
-      />
+      {loading ? (
+        <ModalFeedBack
+          visible={modal}
+          onRequestClose={() => setModal(false)}
+          type="editado"
+        />
+      ) : (
+        <View />
+      )}
     </Container>
   );
 }

@@ -1,5 +1,7 @@
 import Styled from "styled-components/native";
 
+import { colors } from '../../../../constants/colors'
+
 export const Container = Styled.View`
   flex: 1;
   width: 100%;
@@ -14,7 +16,7 @@ export const Header = Styled.View`
 
 export const Content = Styled.View`
   flex: 0.1;
-  background-color: #fff;
+  background-color: ${colors.white};
   width: 100%;
   align-items: center;
 
