@@ -9,6 +9,7 @@ import {
   NaversShowRequest,
   NaversRemoveRequest,
   NaversUpdateRequest,
+  NaversOpenModalFeed,
 } from "../../../store/modules/navers/actions";
 
 import {
@@ -77,7 +78,7 @@ export default function EditProfile() {
 
   return (
     <Container>
-      <Header iconName="chevron-left" onPress={() => navigation.goBack()} />
+      <Header name="chevron-left" onPress={() => navigation.goBack()} />
 
       <Title>Editar naver</Title>
 
@@ -141,7 +142,7 @@ export default function EditProfile() {
       {loading ? (
         <ModalFeedBack
           visible={modal}
-          onRequestClose={() => setModal(false)}
+          onRequestClose={() => NaversOpenModalFeed(false)}
           type="editado"
         />
       ) : (

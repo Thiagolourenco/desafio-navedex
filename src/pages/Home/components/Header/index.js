@@ -6,11 +6,11 @@ import { LogoSvg } from "../../../../components";
 
 import { Container } from "./styles";
 
-export default function Header({ iconName, onPress }) {
+export default function Header({ name, onPress }) {
   return (
     <Container>
       <BorderlessButton {...{ onPress }}>
-        <Icon name={iconName} size={30} color="#212121" />
+        <Icon {...{ name }} size={30} color="#212121" />
       </BorderlessButton>
       <View style={{ marginRight: 40 }}>
         <LogoSvg />

@@ -6,6 +6,10 @@ import {
   NaversShowSuccess,
   NaversUpdateSuccess,
   NaversCreateSuccess,
+  NaversCloseModal,
+  NaversRemoveSuccess,
+  NaversOpenModal,
+  NaversOpenModalFeed,
 } from "./actions";
 
 export function* navers({ payload }) {
@@ -32,7 +36,9 @@ export function* naversRemove({ payload }) {
   try {
     const response = yield call(api.delete, `/navers/${payload.id}`);
 
-    console.log("RESPONSE", response.data);
+    yield put(NaversRemoveSuccess(response.data));
+    // yield put(NaversCloseModal());
+    yield put(NaversOpenModalFeed());
   } catch (error) {
     console.log("ERROR", error);
   }
@@ -71,6 +77,7 @@ export function* naversCreate({ payload }) {
     const response = yield call(api.post, "navers", obj);
 
     yield put(NaversCreateSuccess(response.data));
+    yield put(NaversOpenModalFeed());
   } catch (error) {
     console.log("ERROR", error);
   }

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
+import { ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 
 import { LogoSvg } from "../../../components";
 
@@ -13,7 +14,7 @@ import {
   ButtonLogin,
   ButtonLoginText,
 } from "./styles";
-import { AuthenticationRequest } from '../../../store/modules/auth/actions'
+import { AuthenticationRequest } from "../../../store/modules/auth/actions";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -24,8 +25,10 @@ export default function Login() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
+  const loading = useSelector((state) => state.auth.loading);
+
   function handleSignIn() {
-    dispatch(AuthenticationRequest(email, password))
+    dispatch(AuthenticationRequest(email, password));
   }
 
   return (
@@ -57,7 +60,11 @@ export default function Login() {
       </InputContent>
 
       <ButtonLogin onPress={handleSignIn}>
-        <ButtonLoginText>Entrar</ButtonLoginText>
+        {loading ? (
+          <ActivityIndicator size="small" color="#fff" />
+        ) : (
+          <ButtonLoginText>Entrar</ButtonLoginText>
+        )}
       </ButtonLogin>
     </Container>
   );

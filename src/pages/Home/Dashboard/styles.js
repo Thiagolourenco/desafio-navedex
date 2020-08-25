@@ -94,3 +94,9 @@ export const ButtonEdit = Styled(RectButton)`
     align-items: center;
     margin-left: 10px;
 `;
+
+export const Indicator = Styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+`;

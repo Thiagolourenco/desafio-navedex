@@ -1,6 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { FlatList, Image } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import React, { useState, useEffect, useCallback } from "react";
+import {
+  FlatList,
+  Image,
+  ActivityIndicator,
+  View,
+  RefreshControl,
+} from "react-native";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { MaterialIcons as Icon } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +15,8 @@ import { Header, ModalRemove } from "../components";
 import {
   NaversRequest,
   NaversRemoveRequest,
+  NaversCloseModal,
+  NaversOpenModal,
 } from "../../../store/modules/navers/actions";
 
 import {
@@ -25,26 +33,41 @@ import {
   ButtonRemove,
   ButtonEdit,
   ImageV,
+  Indicator,
 } from "./styles";
 
 export default function Dashboard() {
-  const [modal, setModal] = useState(false);
+  // const [modal, setModal] = useState(false);
   const [removeId, setRemoveId] = useState("");
 
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
   const naversData = useSelector((state) => state.navers.data);
-
-  console.log("DATA", naversData);
-  const data = [1, 2, 3, 4];
+  const modal = useSelector((state) => state.navers.modal);
+  const loading = useSelector((state) => state.navers.loading);
 
   useEffect(() => {
-    dispatch(NaversRequest());
-  }, []);
+    if (modal === false) {
+      const navers = navigation.addListener("focus", () => {
+        dispatch(NaversRequest());
+      });
+      console.log(modal, "TRUE");
+      return navers;
+    } else {
+      console.log(modal, "FALSE");
+
+      const navers = navigation.addListener("focus", () => {
+        dispatch(NaversRequest());
+      });
+      return navers;
+    }
+
+    // dispatch(NaversRequest());
+  }, [navigation, naversData, modal]);
 
   function handleModalVisible(id) {
-    setModal(true);
+    dispatch(NaversOpenModal());
     setRemoveId(id);
   }
 
@@ -56,9 +79,13 @@ export default function Dashboard() {
     navigation.navigate("EditProfile");
   }
 
+  function _onRefreshs() {
+    dispatch(NaversRequest());
+  }
+
   return (
     <Container>
-      <Header iconName="menu" onPress={() => navigation.openDrawer()} />
+      <Header name="menu" onPress={() => navigation.openDrawer()} />
       <HeaderButton>
         <TitleNavers>Navers</TitleNavers>
         <ButtonAddNave onPress={() => navigation.navigate("AddNaver")}>
@@ -66,34 +93,47 @@ export default function Dashboard() {
         </ButtonAddNave>
       </HeaderButton>
 
-      <FlatList
-        data={naversData}
-        numColumns="2"
-        keyExtractor={(item) => String(item)}
-        renderItem={({ item }) => (
-          <ListViewContent>
-            <ImageView onPress={() => handleProfile(item.id)}>
-              <ImageV source={{ uri: item.url }} />
-            </ImageView>
-            <ListViewContentText>{item.name}</ListViewContentText>
-            <ListViewContentTextSubTitle>
-              {item.job_role}
-            </ListViewContentTextSubTitle>
-            <GroupButton>
-              <ButtonRemove onPress={() => handleModalVisible(item.id)}>
-                <Ionicons name="md-trash" size={24} color="#212121" />
-              </ButtonRemove>
-              <ButtonEdit onPress={handleEditProfile}>
-                <Icon name="edit" color="#212121" size={24} />
-              </ButtonEdit>
-            </GroupButton>
-          </ListViewContent>
-        )}
-      />
+      {loading ? (
+        <Indicator>
+          <ActivityIndicator size="large" color="#212121" />
+        </Indicator>
+      ) : (
+        <FlatList
+          data={naversData}
+          numColumns="2"
+          style={{ marginBottom: 20 }}
+          keyExtractor={(item) => String(item)}
+          refreshControl={
+            <RefreshControl
+              refreshing={loading}
+              onRefresh={() => _onRefreshs()}
+            />
+          }
+          renderItem={({ item }) => (
+            <ListViewContent>
+              <ImageView onPress={() => handleProfile(item.id)}>
+                <ImageV source={{ uri: item.url }} />
+              </ImageView>
+              <ListViewContentText>{item.name}</ListViewContentText>
+              <ListViewContentTextSubTitle>
+                {item.job_role}
+              </ListViewContentTextSubTitle>
+              <GroupButton>
+                <ButtonRemove onPress={() => handleModalVisible(item.id)}>
+                  <Ionicons name="md-trash" size={24} color="#212121" />
+                </ButtonRemove>
+                <ButtonEdit onPress={handleEditProfile}>
+                  <Icon name="edit" color="#212121" size={24} />
+                </ButtonEdit>
+              </GroupButton>
+            </ListViewContent>
+          )}
+        />
+      )}
 
       <ModalRemove
         visible={modal}
-        onRequestClose={() => setModal(false)}
+        onRequestClose={() => dispatch(NaversCloseModal())}
         onPress={() => dispatch(NaversRemoveRequest(removeId))}
       />
     </Container>

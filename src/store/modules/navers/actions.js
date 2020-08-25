@@ -95,30 +95,54 @@ export function NaversUpdateFailure(error) {
 }
 
 export function NaversCreateRequest(
-    name,
-    cargo,
-    idade,
-    tempoempresa,
-    projetoparticipou,
-    url
-  ) {
-    return {
-      type: "@navers/NAVERS_CREATE_REQUEST",
-      payload: { name, cargo, idade, tempoempresa, projetoparticipou, url },
-    };
-  }
-  
-  export function NaversCreateSuccess(data) {
-    return {
-      type: "@navers/NAVERS_CREATE_SUCCESS",
-      payload: { data },
-    };
-  }
-  
-  export function NaversCreateFailure(error) {
-    return {
-      type: "@navers/NAVERS_CREATE_FAILURE",
-      payload: { error },
-    };
-  }
-  
+  name,
+  cargo,
+  idade,
+  tempoempresa,
+  projetoparticipou,
+  url
+) {
+  return {
+    type: "@navers/NAVERS_CREATE_REQUEST",
+    payload: { name, cargo, idade, tempoempresa, projetoparticipou, url },
+  };
+}
+
+export function NaversCreateSuccess(data) {
+  return {
+    type: "@navers/NAVERS_CREATE_SUCCESS",
+    payload: { data },
+  };
+}
+
+export function NaversCreateFailure(error) {
+  return {
+    type: "@navers/NAVERS_CREATE_FAILURE",
+    payload: { error },
+  };
+}
+
+//modal
+export function NaversOpenModal() {
+  return {
+    type: "@navers/NAVERS_OPEN_MODAL",
+  };
+}
+
+export function NaversCloseModal() {
+  return {
+    type: "@navers/NAVERS_CLOSE_MODAL",
+  };
+}
+
+export function NaversOpenModalFeed() {
+  return {
+    type: "@navers/NAVERS_OPEN_MODAL_FEED",
+  };
+}
+
+export function NaversCloseModalFeed() {
+  return {
+    type: "@navers/NAVERS_CLOSE_MODAL_FEED",
+  };
+}

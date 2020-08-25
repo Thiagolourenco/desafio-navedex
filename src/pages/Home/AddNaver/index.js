@@ -5,7 +5,12 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { useSelector, useDispatch } from "react-redux";
 
 import { Header, ModalFeedBack } from "../components";
-import { NaversCreateRequest } from "../../../store/modules/navers/actions";
+import {
+  NaversCreateRequest,
+  NaversCloseModal,
+  NaversOpenModal,
+  NaversCloseModalFeed,
+} from "../../../store/modules/navers/actions";
 
 import {
   Container,
@@ -24,11 +29,12 @@ export default function AddNaver() {
   const [tempoEmpresa, setTempoEmpresa] = useState("");
   const [projetosParcipou, setProjetosParcipou] = useState("");
   const [urlPhoto, setUrlPhoto] = useState("");
-  const [modal, setModal] = useState(false);
+  // const [modal, setModal] = useState(false);
 
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.navers.loading);
+  const modal = useSelector((state) => state.navers.modalFeed);
 
   function handleSaveNavers() {
     setModal(true);
@@ -49,7 +55,7 @@ export default function AddNaver() {
 
   return (
     <Container>
-      <Header iconName="chevron-left" onPress={() => navigation.goBack()} />
+      <Header name="chevron-left" onPress={() => navigation.goBack()} />
 
       <KeyboardAwareScrollView>
         <Title>Adicionar naver</Title>
@@ -93,14 +99,17 @@ export default function AddNaver() {
           />
         </Content>
         <ButtonSave onPress={handleCreateNavers}>
-          {loading ? <ActivityIndicator size="small" color="#fff"/> : <ButtonSaveText>Salvar</ButtonSaveText> }
-          
+          {loading ? (
+            <ActivityIndicator size="small" color="#fff" />
+          ) : (
+            <ButtonSaveText>Salvar</ButtonSaveText>
+          )}
         </ButtonSave>
       </KeyboardAwareScrollView>
 
       <ModalFeedBack
-        visible={modal}
-        onRequestClose={() => setModal(false)}
+        visibles={modal}
+        onRequestCloses={() => dispatch(NaversCloseModalFeed())}
         type="adicionado"
       />
     </Container>

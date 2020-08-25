@@ -8,7 +8,8 @@ const INITIAL_STATE = {
   loadingRemove: false,
   loadingProfile: false,
   user: [],
-  update: null
+  update: null,
+  modalFeed: false,
 };
 
 export default function auth(state = INITIAL_STATE, action) {
@@ -104,6 +105,25 @@ export default function auth(state = INITIAL_STATE, action) {
         break;
       }
 
+      case "@navers/NAVERS_OPEN_MODAL": {
+        draft.modal = true;
+        break;
+      }
+
+      case "@navers/NAVERS_CLOSE_MODAL": {
+        draft.modal = false;
+        break;
+      }
+
+      case "@navers/NAVERS_OPEN_MODAL_FEED": {
+        draft.modalFeed = true;
+        break;
+      }
+
+      case "@navers/NAVERS_CLOSE_MODAL_FEED": {
+        draft.modalFeed = false;
+        break;
+      }
 
       default:
         draft.loading = false;

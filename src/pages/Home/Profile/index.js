@@ -6,7 +6,10 @@ import { Ionicons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Header, ModalRemove } from "../components";
-import { NaversShowRequest, NaversRemoveRequest } from "../../../store/modules/navers/actions";
+import {
+  NaversShowRequest,
+  NaversRemoveRequest,
+} from "../../../store/modules/navers/actions";
 
 import {
   Container,
@@ -20,7 +23,7 @@ import {
   ButtonCancelText,
   ButtonEdit,
   ButtonEditText,
-  Indicator
+  Indicator,
 } from "./styles";
 
 export default function Profile() {
@@ -49,14 +52,14 @@ export default function Profile() {
 
   return (
     <Container>
-      <Header iconName="chevron-left" onPress={() => navigation.goBack()} />
+      <Header name="chevron-left" onPress={() => navigation.goBack()} />
       {loading ? (
-        <Indicator >
+        <Indicator>
           <ActivityIndicator color="#212121" size="small" />
         </Indicator>
       ) : (
         <>
-          <ImageProfile source={{ uri: userInfo.url}}/>
+          <ImageProfile source={{ uri: userInfo.url }} />
           <Content>
             <TextName>{userInfo.name}</TextName>
             <TextValues>{userInfo.job_role}</TextValues>
@@ -82,7 +85,11 @@ export default function Profile() {
           <ButtonEditText>Editar</ButtonEditText>
         </ButtonEdit>
       </GroupButton>
-      <ModalRemove visible={modal} onRequestClose={() => setModal(false)} onPress={() => dispatch(NaversRemoveRequest(profileId))}/>
+      <ModalRemove
+        visible={modal}
+        onRequestClose={() => setModal(false)}
+        onPress={() => dispatch(NaversRemoveRequest(profileId))}
+      />
     </Container>
   );
 }
