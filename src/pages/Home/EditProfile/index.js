@@ -10,6 +10,7 @@ import {
   NaversRemoveRequest,
   NaversUpdateRequest,
   NaversOpenModalFeed,
+  NaversCloseModalFeed,
 } from "../../../store/modules/navers/actions";
 
 import {
@@ -29,7 +30,6 @@ export default function EditProfile() {
   const [tempoEmpresa, setTempoEmpresa] = useState("");
   const [projetosParcipou, setProjetosParcipou] = useState("");
   const [urlPhoto, setUrlPhoto] = useState("");
-  const [modal, setModal] = useState(true);
 
   const nameRef = useRef(null);
   const cargoRef = useRef(null);
@@ -45,6 +45,7 @@ export default function EditProfile() {
   const userInfo = useSelector((state) => state.navers.user);
   const modalInfo = useSelector((state) => state.navers.modal);
   const loading = useSelector((state) => state.navers.loading);
+  const modal = useSelector((state) => state.navers.modalFeed);
 
   const profileId = routes.params.profileId;
 
@@ -55,7 +56,6 @@ export default function EditProfile() {
     setTempoEmpresa(userInfo.admission_date);
     setProjetosParcipou(userInfo.project);
     setUrlPhoto(userInfo.url);
-    setModal(modalInfo);
   }, [userInfo]);
 
   useEffect(() => {
@@ -139,15 +139,11 @@ export default function EditProfile() {
           )}
         </ButtonSave>
       </KeyboardAwareScrollView>
-      {loading ? (
-        <ModalFeedBack
-          visible={modal}
-          onRequestClose={() => NaversOpenModalFeed(false)}
-          type="editado"
-        />
-      ) : (
-        <View />
-      )}
+      <ModalFeedBack
+        visibles={modal}
+        onRequestCloses={() => NaversCloseModalFeed(false)}
+        type="editado"
+      />
     </Container>
   );
 }

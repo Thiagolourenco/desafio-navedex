@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import { BorderlessButton } from "react-native-gesture-handler";
-import { LogoSvg } from "../../../../components";
 
+import { LogoSvg } from "../../../../components";
 import { Container } from "./styles";
 
 export default function Header({ name, onPress }) {
@@ -15,7 +15,7 @@ export default function Header({ name, onPress }) {
       <View style={{ marginRight: 40 }}>
         <LogoSvg />
       </View>
-      <Icon name="" size={30} color="#212121" />
+      <View style={{ backgroundColor: "#FFF" }} />
     </Container>
   );
 }

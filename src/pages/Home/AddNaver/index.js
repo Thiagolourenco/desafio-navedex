@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Text, ActivityIndicator } from "react-native";
+import React, { useState, useRef } from "react";
+import { ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useSelector, useDispatch } from "react-redux";
@@ -29,12 +29,18 @@ export default function AddNaver() {
   const [tempoEmpresa, setTempoEmpresa] = useState("");
   const [projetosParcipou, setProjetosParcipou] = useState("");
   const [urlPhoto, setUrlPhoto] = useState("");
-  // const [modal, setModal] = useState(false);
 
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.navers.loading);
   const modal = useSelector((state) => state.navers.modalFeed);
+
+  //refs
+  const cargoRef = useRef(null);
+  const idadeRef = useRef(null);
+  const tempoEmpresaRef = useRef(null);
+  const projetosParcipouRef = useRef(null);
+  const urlPhotoRef = useRef(null);
 
   function handleSaveNavers() {
     setModal(true);
@@ -66,36 +72,59 @@ export default function AddNaver() {
             placeholder="Name"
             value={name}
             onChangeText={(value) => setName(value)}
+            onSubmitEditing={() => cargoRef.current.focus()}
+            returnKeyLabel="next"
+            returnKeyType="next"
           />
           <Label>Cargo</Label>
           <Input
+            ref={cargoRef}
             placeholder="Cargo"
             value={cargo}
             onChangeText={(value) => setCargo(value)}
+            onSubmitEditing={() => idadeRef.current.focus()}
+            returnKeyLabel="next"
+            returnKeyType="next"
           />
           <Label>Idade</Label>
           <Input
+            ref={idadeRef}
             placeholder="Idade"
             value={idade}
             onChangeText={(value) => setIdade(value)}
+            onSubmitEditing={() => tempoEmpresaRef.current.focus()}
+            returnKeyLabel="next"
+            returnKeyType="next"
           />
           <Label>Tempo de empresa</Label>
           <Input
+            ref={tempoEmpresaRef}
             placeholder="Tempo de empresa"
             value={tempoEmpresa}
             onChangeText={(value) => setTempoEmpresa(value)}
+            onSubmitEditing={() => projetosParcipouRef.current.focus()}
+            returnKeyLabel="next"
+            returnKeyType="next"
           />
           <Label>Projetos que participou</Label>
           <Input
+            ref={projetosParcipouRef}
             placeholder="Projetos que participou"
             value={projetosParcipou}
             onChangeText={(value) => setProjetosParcipou(value)}
+            onSubmitEditing={() => urlPhotoRef.current.focus()}
+            returnKeyLabel="next"
+            returnKeyType="next"
           />
           <Label>URL da foto do naver</Label>
           <Input
+            ref={urlPhotoRef}
             placeholder="URL da foto do naver"
             value={urlPhoto}
             onChangeText={(value) => setUrlPhoto(value)}
+            returnKeyLabel="go"
+            returnKeyType="go"
+            onSubmitEditing={handleCreateNavers}
           />
         </Content>
         <ButtonSave onPress={handleCreateNavers}>

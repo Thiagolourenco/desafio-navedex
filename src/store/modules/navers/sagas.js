@@ -58,6 +58,7 @@ export function* naversUpdate({ payload }) {
     const response = yield call(api.put, `/navers/${payload.id}`, obj);
 
     yield put(NaversUpdateSuccess(response.data));
+    yield put(NaversOpenModalFeed());
   } catch (error) {
     console.log("ERRO", error);
   }
