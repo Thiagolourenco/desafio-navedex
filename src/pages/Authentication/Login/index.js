@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { ActivityIndicator } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 
 import { LogoSvg } from "../../../components";
@@ -23,7 +22,6 @@ export default function Login() {
 
   const passwordRef = useRef(null);
 
-  const navigation = useNavigation();
   const dispatch = useDispatch();
 
   const loading = useSelector((state) => state.auth.loading);

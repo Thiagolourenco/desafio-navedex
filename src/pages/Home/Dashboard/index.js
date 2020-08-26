@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  FlatList,
-  ActivityIndicator,
-  RefreshControl,
-} from "react-native";
+import { FlatList, ActivityIndicator, RefreshControl } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons as Icon } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
@@ -59,11 +55,6 @@ export default function Dashboard() {
       });
       return navers;
     }
-    const navers = navigation.addListener("focus", () => {
-      dispatch(NaversRequest());
-    });
-    return navers;
-
   }, [navigation, naversData, modalFeed]);
 
   function handleModalVisible(id) {

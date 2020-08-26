@@ -142,6 +142,8 @@ export default function EditProfile() {
               placeholder="URL da foto do naver"
               value={url}
               onChangeText={(value) => setUrlPhoto(value)}
+              onSubmitEditing={() => handleEditNaver()}
+
             />
           </Content>
         </ScrollView>

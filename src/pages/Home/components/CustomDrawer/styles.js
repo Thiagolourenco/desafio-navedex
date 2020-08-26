@@ -1,6 +1,6 @@
 import Styled from "styled-components/native";
 import { scale } from "react-native-size-matters";
-import { BorderlessButton } from 'react-native-gesture-handler';
+import { BorderlessButton } from "react-native-gesture-handler";
 
 import { colors } from "../../../../constants/colors";
 
@@ -21,7 +21,6 @@ export const Content = Styled.View`
   background-color: ${colors.white};
   width: 100%;
   align-items: center;
-
 `;
 
 export const ButtonDrawer = Styled(BorderlessButton)`
