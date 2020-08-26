@@ -1,5 +1,4 @@
 import Styled from "styled-components/native";
-import { RectButton } from "react-native-gesture-handler";
 import { scale } from 'react-native-size-matters'
 
 import { colors } from "../../../../constants/colors";

@@ -1,9 +1,8 @@
 import React from "react";
 import { Feather as Icon } from "@expo/vector-icons";
-import { BorderlessButton } from "react-native-gesture-handler";
 import { useDispatch } from "react-redux";
 
-import { Container, Header, Content } from "./styles";
+import { Container, Header, Content, ButtonDrawer } from "./styles";
 import DrawerItem from "../DrawerItem";
 import { signOut } from "../../../../store/modules/auth/actions";
 import { colors } from "../../../../constants/colors";
@@ -39,12 +38,9 @@ export default function CustomDrawer({ navigation }) {
   return (
     <Container>
       <Header>
-        <BorderlessButton
-          onPress={closeMenuDrawer}
-          style={{ marginLeft: 15, marginTop: 30, height: 40, width: 40 }}
-        >
+        <ButtonDrawer onPress={closeMenuDrawer}>
           <Icon name="menu" size={30} color={colors.primary} />
-        </BorderlessButton>
+        </ButtonDrawer>
       </Header>
       <Content>
         {data.map((item) => (
