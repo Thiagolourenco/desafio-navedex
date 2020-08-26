@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useSelector, useDispatch } from "react-redux";
@@ -65,6 +65,7 @@ export default function AddNaver() {
       <KeyboardAwareScrollView>
         <Title>Adicionar naver</Title>
 
+        <ScrollView>
         <Content>
           <Label>Name</Label>
           <Input
@@ -126,6 +127,7 @@ export default function AddNaver() {
             onSubmitEditing={handleCreateNavers}
           />
         </Content>
+        </ScrollView>
         <ButtonSave onPress={handleCreateNavers}>
           {loading ? (
             <ActivityIndicator size="small" color={colors.white} />
