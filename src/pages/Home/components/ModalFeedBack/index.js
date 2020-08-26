@@ -14,7 +14,13 @@ import { NaversCloseModal } from "../../../../store/modules/navers/actions";
 import { colors } from "../../../../constants/colors";
 
 export default function ModalFeedBack({ visibles, onRequestCloses, type }) {
-  const dispatch = useDispatch();
+  // useEffect(() => {
+  //   if (dash == "dash") {
+  //     list("s");
+  //   } else {
+  //     list("");
+  //   }
+  // }, [type]);
 
   return (
     <Modal

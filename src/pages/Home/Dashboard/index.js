@@ -51,13 +51,24 @@ export default function Dashboard() {
   const modalFeed = useSelector((state) => state.navers.modalFeed);
 
   useEffect(() => {
+    if (modalFeed) {
+      const navers = navigation.addListener("focus", () => {
+        dispatch(NaversRequest());
+      });
+      return navers;
+    } else {
+      const navers = navigation.addListener("focus", () => {
+        dispatch(NaversRequest());
+      });
+      return navers;
+    }
     const navers = navigation.addListener("focus", () => {
       dispatch(NaversRequest());
     });
     return navers;
 
     // dispatch(NaversRequest());
-  }, [navigation, naversData]);
+  }, [navigation, naversData, modalFeed]);
 
   function handleModalVisible(id) {
     dispatch(NaversOpenModal());
@@ -94,7 +105,7 @@ export default function Dashboard() {
         <FlatList
           data={naversData}
           numColumns="2"
-          style={{ marginBottom: 20 }}
+          style={{ marginBottom: 20, flex: 1 }}
           keyExtractor={(item) => String(item.id)}
           refreshControl={
             <RefreshControl
@@ -134,6 +145,8 @@ export default function Dashboard() {
         visibles={modalFeed}
         onRequestCloses={() => dispatch(NaversCloseModalFeed())}
         type="excluido"
+        // dash="dash"
+        // list={(value) => console.log("VALUE", value)}
       />
     </Container>
   );
