@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import {ActivityIndicator } from "react-native";
+import {ActivityIndicator, ScrollView } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { MaterialIcons as Icon } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { differenceInMonths } from "date-fns";
-import pt from "date-fns/locale/pt";
 
 import { Header, ModalRemove, ModalFeedBack } from "../components";
 import {
@@ -75,6 +74,7 @@ export default function Profile() {
   return (
     <Container>
       <Header name="chevron-left" onPress={() => navigation.goBack()} />
+      <ScrollView>
       {loading ? (
         <Indicator>
           <ActivityIndicator color={colors.primary} size="large" />
@@ -107,6 +107,7 @@ export default function Profile() {
           <ButtonEditText>Editar</ButtonEditText>
         </ButtonEdit>
       </GroupButton>
+      </ScrollView>
       <ModalRemove
         visible={modal}
         onRequestClose={() => dispatch(NaversCloseModalProfile())}

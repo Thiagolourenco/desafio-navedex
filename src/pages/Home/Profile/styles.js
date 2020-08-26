@@ -1,89 +1,91 @@
 import Styled from "styled-components/native";
 import { RectButton } from "react-native-gesture-handler";
+import { scale } from "react-native-size-matters";
 
-import { colors } from '../../../constants/colors'
+import { colors } from "../../../constants/colors";
 
 export const Container = Styled.View`
     flex: 1;
 `;
 
 export const Content = Styled.View`
-    margin-top: 20px;
-    margin-left: 15px;
+    margin-top: ${scale(20)}px;
+    margin-left: ${scale(15)}px;
 `;
 
 export const ImageProfile = Styled.Image`
-    height: 280px;
+    height: ${scale(280)}px;
     width: 100%;
     background: #ccc;
 `;
 
 export const TextName = Styled.Text`
-    font-size: 22px;
+    font-size: ${scale(22)}px;
     font-weight: 600;
-    line-height: 32px;
+    line-height: ${scale(32)}px;
     color: ${colors.primary};
 `;
 
 export const TextData = Styled.Text`
-    font-size: 16px;
+    font-size: ${scale(16)}px;
     color: ${colors.primary};
     font-weight: 600;
-    line-height: 24px;
-    margin-top: 20px;
+    line-height: ${scale(24)}px;
+    margin-top: ${scale(15)}px;
 
 `;
 
 export const TextValues = Styled.Text`
-    font-size: 16px;
+    font-size: ${scale(16)}px;
     color:${colors.primary};
-    line-height: 24px;
+    line-height: ${scale(24)}px;
 `;
 
 export const GroupButton = Styled.View`
- flex-direction: row;
+    flex-direction: row;
     align-self: center;
-    margin-top: 35px;
+    margin-top: ${scale(25)}px;
+    margin-bottom: ${scale(20)}px;
 `;
 
 export const ButtonCancel = Styled.TouchableOpacity.attrs({
   activeOpacity: 0.6,
 })`
-      height: 40px;
-      width: 156px;
+      height: ${scale(40)}px;
+      width: ${scale(156)}px;
       /* border: 5px solid #212121; */
       border-width: 1px;
       border-color: ${colors.borderColor};
       justify-content: center;
       align-items: center;
-      margin-right: 8px;
+      margin-right: ${scale(8)}px;
       flex-direction: row;
    `;
 
 export const ButtonCancelText = Styled.Text`
-      font-size: 14px;
+      font-size: ${scale(14)}px;
       color: ${colors.primary};
       font-weight: 600;
-      margin-left: 8px;
+      margin-left: ${scale(8)}px;
 
   `;
 
 export const ButtonEdit = Styled(RectButton)`
-      height: 40px;
-      width: 158px;
+      height: ${scale(40)}px;
+      width: ${scale(158)}px;
       background-color: ${colors.primary};
       justify-content: center;
       align-items: center;
-      margin-left: 8px;
+      margin-left: ${scale(8)}px;
       flex-direction: row;
 
   `;
 
 export const ButtonEditText = Styled.Text`
-      font-size: 14px;
+      font-size: ${scale(14)}px;
       color: ${colors.white};
       font-weight: 600;
-      margin-left: 8px;
+      margin-left: ${scale(8)}px;
   `;
 
 export const Indicator = Styled.View`
