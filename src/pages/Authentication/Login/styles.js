@@ -1,5 +1,6 @@
 import Styled from "styled-components/native";
 import { RectButton } from "react-native-gesture-handler";
+import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 
 import { colors } from "../../../constants/colors";
 
@@ -10,40 +11,41 @@ export const Container = Styled.View`
 `;
 
 export const InputContent = Styled.View`
-    margin-top: 10px;
+    margin-top:${scale(10)}px;
 `;
 
 export const Label = Styled.Text`
-    font-size: 14px;
+    font-size: ${scale(14)}px;
     font-weight: 600;
     line-height: 18px;
     color:${colors.primary};
-    margin-top: 30px;
+    margin-top: ${scale(30)}px;
+    /* font-family: Montserrat-Regular; */
 
 `;
 
 export const Input = Styled.TextInput.attrs({
   placeholderTextColor: "#ccc",
 })`
-  height: 40px;
-  width: 328px;
+  height: ${scale(40)}px;
+  width:${scale(328)}px;
   border-width: 1px;
   border-color: ${colors.borderColor};
-  padding-left: 10px;
-  margin-top: 5px;
+  padding-left: ${moderateScale(10)}px;
+  margin-top: ${scale(5)}px;
 `;
 
 export const ButtonLogin = Styled(RectButton)`
-    height: 40px;
-    width: 328px;
+    height: ${scale(40)}px;
+    width:${scale(328)}px;
     background-color: ${colors.primary};
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin-top: ${scale(40)}px;
 `;
 
 export const ButtonLoginText = Styled.Text`
-    font-size: 14px;
+    font-size: ${scale(14)}px;
     line-height: 24px;
     font-weight: 600;
     color: ${colors.white};

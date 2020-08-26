@@ -1,7 +1,8 @@
 import Styled from "styled-components/native";
 import { RectButton } from "react-native-gesture-handler";
+import { scale } from "react-native-size-matters";
 
-import { colors } from '../../../constants/colors'
+import { colors } from "../../../constants/colors";
 
 export const Container = Styled.View`
     flex: 1;
@@ -9,22 +10,22 @@ export const Container = Styled.View`
 
 export const HeaderButton = Styled.View`
     flex-direction: row;
-    margin-top: 25px;
+    margin-top: ${scale(25)}px;
     justify-content: space-between;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: ${scale(15)}px;
+    margin-right: ${scale(15)}px;
 `;
 
 export const TitleNavers = Styled.Text`
-    font-size: 22px;
+    font-size:  ${scale(22)}px;
     font-weight: 600;
     color: ${colors.primary};
-    line-height: 32px;
+    line-height: ${scale(32)}px;
 `;
 
 export const ButtonAddNave = Styled(RectButton)`
-    height: 40px;
-    width: 155px;
+    height: ${scale(40)}px;
+    width: ${scale(155)}px;
     background-color: ${colors.primary};
     justify-content: center;
     align-items: center;
@@ -32,23 +33,23 @@ export const ButtonAddNave = Styled(RectButton)`
 
 export const ButtonAddNaveText = Styled.Text`
     color: ${colors.white};
-    font-size: 14px;
+    font-size: ${scale(14)}px;
     font-weight: 600;
-    line-height: 24px;
+    line-height: ${scale(24)}px;
 `;
 
 export const ListViewContent = Styled.View`
-    height: 234px;
-    width: 156.56px;
-    margin-left: 16px;
-    margin-top: 30px;
+    height: ${scale(234)}px;
+    width: ${scale(156.56)}px;
+    margin-left: ${scale(12)}px;
+    margin-top: ${scale(30)}px;
 `;
 
 export const ImageView = Styled.TouchableOpacity.attrs({
   activeOpacity: 0.7,
 })`
-    height: 170px;
-    width: 156.56px;
+    height: ${scale(170)}px;
+    width: ${scale(156.56)}px;
     background: #ccc;
 `;
 
@@ -58,27 +59,27 @@ export const ImageV = Styled.Image`
 `;
 
 export const ListViewContentText = Styled.Text`
-    font-size: 14px;
+    font-size: ${scale(14)}px;
     color: ${colors.primary};
     font-weight: 600;
-    line-height: 20px;
+    line-height: ${scale(20)}px;
 `;
 
 export const ListViewContentTextSubTitle = Styled.Text`
-    font-size: 14px;
+    font-size: ${scale(14)}px;
     color: ${colors.primary};
     font-weight: normal;
-    line-height: 16px;
+    line-height: ${scale(16)}px;
 `;
 
 export const GroupButton = Styled.View`
     flex-direction: row;
-    margin-top: 5px;
+    margin-top: ${scale(5)}px;
 `;
 
 export const ButtonRemove = Styled(RectButton)`
-    height: 25px;
-    width: 25px;
+    height: ${scale(25)}px;
+    width: ${scale(25)}px;
     border-radius: 15px;
     justify-content: center;
     align-items: center;
@@ -86,8 +87,8 @@ export const ButtonRemove = Styled(RectButton)`
 `;
 
 export const ButtonEdit = Styled(RectButton)`
-    height: 25px;
-    width: 25px;
+    height: ${scale(25)}px;
+    width: ${scale(25)}px;
     border-radius: 15px;
     justify-content: center;
     align-items: center;
