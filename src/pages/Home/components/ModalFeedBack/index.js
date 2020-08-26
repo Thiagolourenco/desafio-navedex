@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
-import { Modal, Text, TouchableOpacity } from "react-native";
+import React from "react";
+import { Modal, TouchableOpacity } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
-import { useDispatch } from "react-redux";
 
 import {
   Container,
@@ -10,18 +9,9 @@ import {
   ContentHeaderTitle,
   ContentValues,
 } from "./styles";
-import { NaversCloseModal } from "../../../../store/modules/navers/actions";
 import { colors } from "../../../../constants/colors";
 
 export default function ModalFeedBack({ visibles, onRequestCloses, type }) {
-  // useEffect(() => {
-  //   if (dash == "dash") {
-  //     list("s");
-  //   } else {
-  //     list("");
-  //   }
-  // }, [type]);
-
   return (
     <Modal
       visible={visibles}

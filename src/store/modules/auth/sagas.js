@@ -1,6 +1,6 @@
 import { all, takeLatest, call, put } from "redux-saga/effects";
+import { showMessage } from 'react-native-flash-message'
 
-// @auth/AUTHENTICATION_REQUEST
 import api from "../../../services/api";
 
 import { AuthenticationSuccess, AuthenticationFailure } from "./actions";
@@ -21,8 +21,11 @@ export function* authentication({ payload }) {
 
     yield put(AuthenticationSuccess(token));
   } catch (error) {
-    console.log("ERROR", error);
-    yield put(AuthenticationFailure());
+    showMessage({
+      type: "danger",
+      message: "Credenciais erradas, tente novamente."
+    })
+    yield put(AuthenticationFailure(error));
   }
 }
 

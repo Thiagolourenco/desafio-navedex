@@ -39,7 +39,6 @@ export default function auth(state = INITIAL_STATE, action) {
       }
 
       case "@navers/NAVERS_REMOVE_SUCCESS": {
-        // draft.error = action.payload.error;
         draft.loadingRemove = false;
         draft.modal = true;
         break;
@@ -57,7 +56,6 @@ export default function auth(state = INITIAL_STATE, action) {
       }
 
       case "@navers/NAVERS_SHOW_SUCCESS": {
-        // draft.error = action.payload.error;
         draft.loadingProfile = false;
         draft.user = action.payload.data;
         break;
@@ -75,7 +73,6 @@ export default function auth(state = INITIAL_STATE, action) {
       }
 
       case "@navers/NAVERS_UPDATE_SUCCESS": {
-        // draft.error = action.payload.error;
         draft.loading = false;
         draft.update = action.payload.data;
         break;
@@ -93,7 +90,6 @@ export default function auth(state = INITIAL_STATE, action) {
       }
 
       case "@navers/NAVERS_CREATE_SUCCESS": {
-        // draft.error = action.payload.error;
         draft.loading = false;
         draft.update = action.payload.data;
         break;

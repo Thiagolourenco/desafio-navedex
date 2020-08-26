@@ -1,23 +1,16 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { View, Text, ActivityIndicator } from "react-native";
+import React, { useEffect } from "react";
+import {ActivityIndicator } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { MaterialIcons as Icon } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { forma, differenceInMonths } from "date-fns";
+import { differenceInMonths } from "date-fns";
 import pt from "date-fns/locale/pt";
 
-import {
-  Header,
-  ModalRemove,
-  DateFormated,
-  ModalFeedBack,
-} from "../components";
+import { Header, ModalRemove, ModalFeedBack } from "../components";
 import {
   NaversShowRequest,
   NaversRemoveRequest,
-  NaversCloseModal,
-  NaversOpenModal,
   NaversCloseModalProfile,
   NaversOpenModalProfile,
   NaversCloseModalFeed,
@@ -40,8 +33,6 @@ import {
 import { colors } from "../../../constants/colors";
 
 export default function Profile() {
-  const [valor, setValor] = useState("");
-
   const navigation = useNavigation();
   const routes = useRoute();
   const dispatch = useDispatch();
@@ -58,34 +49,20 @@ export default function Profile() {
 
   const birtdateValue = new Date(dataBirthdate).getFullYear();
   const anoAtual = new Date().getFullYear();
-  const idadeAtual =  anoAtual - birtdateValue;
-  
-  const admission_dateTempo = differenceInMonths(new Date(), new Date(dataJobRole));
+  const idadeAtual = anoAtual - birtdateValue;
 
-  console.log("admission_dateTempo", admission_dateTempo)
-  // const dataFormatedBirthdate = useMemo(
-  //   () => format(dataBirthdate, 'dd/MM/yyyy', {locale: pt}),
-  //   [dataBirthdate],
-  // );
-
-  // console.log("DATA BIRTHDATE -> ", dataFormatedBirthdate);
+  const admission_dateTempo = differenceInMonths(
+    new Date(),
+    new Date(dataJobRole)
+  );
 
   useEffect(() => {
-    if (modalFeed) {
-      console.log("VALOR");
-    } else {
-      console.log("OK VALOR");
-    }
     const navers = navigation.addListener("focus", () => {
       dispatch(NaversShowRequest(profileId));
     });
 
     return navers;
   }, [navigation, modalFeed]);
-
-  // function handleModal() {
-  //   setModal(true);
-  // }
 
   function handleEditProfile() {
     navigation.navigate("EditProfile", { profileId });
@@ -110,7 +87,6 @@ export default function Profile() {
             <TextValues>{userInfo.job_role}</TextValues>
             <TextData>Idade</TextData>
             <TextValues>{idadeAtual} anos</TextValues>
-            {/* <DateFormated data={userInfo.birthdate} /> */}
             <TextData>Tempo de empresa</TextData>
             <TextValues>{admission_dateTempo} meses</TextValues>
             <TextData>Projetos que participou</TextData>
@@ -141,8 +117,6 @@ export default function Profile() {
         visibles={modalFeed}
         onRequestCloses={() => dispatch(NaversCloseModalFeed())}
         type="excluido"
-        // dash=""
-        // list={(value) => setValor(value)}
       />
     </Container>
   );

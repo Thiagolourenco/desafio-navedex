@@ -7,8 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Header, ModalFeedBack } from "../components";
 import {
   NaversCreateRequest,
-  NaversCloseModal,
-  NaversOpenModal,
   NaversCloseModalFeed,
 } from "../../../store/modules/navers/actions";
 

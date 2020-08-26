@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Modal, View, Text, TouchableOpacity } from "react-native";
+import React from "react";
+import { Modal, TouchableOpacity } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -15,14 +15,9 @@ import {
   ButtonRemove,
   ButtonRemoveText,
 } from "./styles";
-import ModalFeedBack from "../ModalFeedBack";
-import { NaversCloseModalFeed } from "../../../../store/modules/navers/actions";
 import { colors } from "../../../../constants/colors";
 
 export default function ModalRemove({ visible, onRequestClose, onPress }) {
-  const dispatch = useDispatch();
-  const modal = useSelector((state) => state.navers.modalFeed);
-
   return (
     <Modal
       visible={visible}
@@ -51,11 +46,6 @@ export default function ModalRemove({ visible, onRequestClose, onPress }) {
             </ButtonRemove>
           </ButtonGroupModal>
         </Content>
-        {/* <ModalFeedBack
-          visibles={modal}
-          onRequestCloses={() => dispatch(NaversCloseModalFeed())}
-          type="excluido"
-        /> */}
       </Container>
     </Modal>
   );

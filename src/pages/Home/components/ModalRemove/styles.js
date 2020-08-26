@@ -52,7 +52,6 @@ export const ButtonCancel = Styled.TouchableOpacity.attrs({
 })`
     height: 40px;
     width: 132px;
-    /* border: 5px solid #212121; */
     border-width: 1px;
     border-color: ${colors.borderColor};
     justify-content: center;

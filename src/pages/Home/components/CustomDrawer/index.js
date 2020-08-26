@@ -1,14 +1,12 @@
 import React from "react";
 import { Feather as Icon } from "@expo/vector-icons";
 import { BorderlessButton } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
-import { DrawerActions } from "@react-navigation/drawer";
-import { useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux";
 
 import { Container, Header, Content } from "./styles";
 import DrawerItem from "../DrawerItem";
-import {signOut} from '../../../../store/modules/auth/actions'
-import { colors } from '../../../../constants/colors'
+import { signOut } from "../../../../store/modules/auth/actions";
+import { colors } from "../../../../constants/colors";
 
 export default function CustomDrawer({ navigation }) {
   const data = [
@@ -31,10 +29,10 @@ export default function CustomDrawer({ navigation }) {
   }
 
   function handleDrawer(item) {
-    if(item == 'Sair') {
-      dispatch(signOut())
-    }else {
-      navigation.navigate(item)
+    if (item == "Sair") {
+      dispatch(signOut());
+    } else {
+      navigation.navigate(item);
     }
   }
 

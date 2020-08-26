@@ -1,7 +1,7 @@
 import Styled from "styled-components/native";
 import { RectButton } from "react-native-gesture-handler";
 
-import { colors } from '../../../constants/colors'
+import { colors } from "../../../constants/colors";
 
 export const Container = Styled.View`
     flex: 1;
@@ -17,7 +17,6 @@ export const Title = Styled.Text`
 
 export const Content = Styled.View`
     margin-left: 15px;
-    /* margin-top: 5px; */
 `;
 
 export const Label = Styled.Text`

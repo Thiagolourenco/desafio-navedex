@@ -40,7 +40,6 @@ export const ButtonAddNaveText = Styled.Text`
 export const ListViewContent = Styled.View`
     height: 234px;
     width: 156.56px;
-    /* background: #ccc; */
     margin-left: 16px;
     margin-top: 30px;
 `;
@@ -51,8 +50,6 @@ export const ImageView = Styled.TouchableOpacity.attrs({
     height: 170px;
     width: 156.56px;
     background: #ccc;
-    /* margin-left: 16px;
-    margin-top: 30px; */
 `;
 
 export const ImageV = Styled.Image`

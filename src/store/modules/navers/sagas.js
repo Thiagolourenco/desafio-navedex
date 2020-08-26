@@ -9,19 +9,21 @@ import {
   NaversCreateFailure,
   NaversCloseModal,
   NaversRemoveSuccess,
-  NaversOpenModal,
   NaversOpenModalFeed,
   NaversUpdateFailure,
-  NaversCloseModalProfile
+  NaversCloseModalProfile,
+  NaversRemoveFailure,
+  NaversShowFailure,
+  NaversFailure
 } from "./actions";
 
-export function* navers({ payload }) {
+export function* navers() {
   try {
     const response = yield call(api.get, "/navers");
 
     yield put(NaversSuccess(response.data));
   } catch (error) {
-    console.log("EROR", error);
+    yield put(NaversFailure())
   }
 }
 
@@ -31,7 +33,7 @@ export function* naversShow({ payload }) {
 
     yield put(NaversShowSuccess(response.data));
   } catch (error) {
-    console.log("ERROR", error);
+    yield put(NaversShowFailure(error))
   }
 }
 
@@ -46,7 +48,7 @@ export function* naversRemove({ payload }) {
 
     yield put(NaversOpenModalFeed());
   } catch (error) {
-    console.log("ERROR", error);
+    yield put(NaversRemoveFailure(error))
   }
 }
 
@@ -66,7 +68,6 @@ export function* naversUpdate({ payload }) {
     yield put(NaversUpdateSuccess(response.data));
     yield put(NaversOpenModalFeed())
   } catch (error) {
-    console.log("ERRO", error);
     yield put(NaversUpdateFailure(error));
   }
 }
@@ -87,7 +88,6 @@ export function* naversCreate({ payload }) {
     yield put(NaversCreateSuccess(response.data));
     yield put(NaversOpenModalFeed());
   } catch (error) {
-    console.log("ERROR", error);
     yield put(NaversCreateFailure(error))
   }
 }

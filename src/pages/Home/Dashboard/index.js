@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FlatList,
-  Image,
   ActivityIndicator,
-  View,
   RefreshControl,
 } from "react-native";
-import { useNavigation, useFocusEffect } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons as Icon } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,7 +37,6 @@ import {
 import { colors } from "../../../constants/colors";
 
 export default function Dashboard() {
-  // const [modal, setModal] = useState(false);
   const [removeId, setRemoveId] = useState("");
 
   const navigation = useNavigation();
@@ -67,7 +64,6 @@ export default function Dashboard() {
     });
     return navers;
 
-    // dispatch(NaversRequest());
   }, [navigation, naversData, modalFeed]);
 
   function handleModalVisible(id) {
@@ -145,8 +141,6 @@ export default function Dashboard() {
         visibles={modalFeed}
         onRequestCloses={() => dispatch(NaversCloseModalFeed())}
         type="excluido"
-        // dash="dash"
-        // list={(value) => console.log("VALUE", value)}
       />
     </Container>
   );

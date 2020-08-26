@@ -21,7 +21,6 @@ export function NaversFailure(error) {
 // remove
 
 export function NaversRemoveRequest(id) {
-  console.log("ID", id);
   return {
     type: "@navers/NAVERS_REMOVE_REQUEST",
     payload: { id },
