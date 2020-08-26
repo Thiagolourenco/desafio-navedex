@@ -23,6 +23,11 @@
 
 Foi desenvolvido este APP, proposto pelo desafio da Navedex. Onde o principal objetivo era desenvolver uma interface que estava disponível no Figma e fazer a criação 
 da mesma, com React Native. Além do desenvolvimento da interface, o desafio também consistia em integrar com uma API disponibilizada pela Navedex
+```bash
+-- Dados para entrar no APP
+    email: thiagolourencosaraiva123@gmail.com
+    password: nave1234
+```
 
 ## 🎨 Layout
 
@@ -35,13 +40,13 @@ O Layout do aplicativo está disponível aqui
 ### Mobile
 
 <p align="center">
-  <img alt="" src="https://thiago-27-storage.s3.amazonaws.com/Scren.jpg" width="150px" height="300px">
+  <img alt="" title="Login" src="https://thiago-27-storage.s3.amazonaws.com/signIN.jpg" width="150px" height="300px">
 
-  <img alt="" src="https://thiago-27-storage.s3.amazonaws.com/splashUm.jpg" width="150px" height="300px">
-  <img alt="" title="Cards" src="https://thiago-27-storage.s3.amazonaws.com/screeb03.jpg" width="150px" height="300px">
-  <img alt="" title="Cards" src="https://thiago-27-storage.s3.amazonaws.com/screeb04.jpg" width="150px" height="300px">
-  <img alt="" title="Profile" src="https://thiago-27-storage.s3.amazonaws.com/profileScreen.jpg" width="150px" height="300px">
-  <img alt="" title="MAP" src="https://thiago-27-storage.s3.amazonaws.com/map.jpg" width="150px" height="300px">
+  <img alt="" title="Home" src="https://thiago-27-storage.s3.amazonaws.com/home.jpg" width="150px" height="300px">
+  <img alt="" title="Drawer" src="https://thiago-27-storage.s3.amazonaws.com/drawer.jpg" width="150px" height="300px">
+  <img alt="" title="Profile" src="https://thiago-27-storage.s3.amazonaws.com/profile.jpg" width="150px" height="300px">
+  <img alt="" title="Adicionar" src="https://thiago-27-storage.s3.amazonaws.com/adicionar.jpg" width="150px" height="300px">
+  <img alt="" title="Editar" src="https://thiago-27-storage.s3.amazonaws.com/editar.jpg" width="150px" height="300px">
 
 </p>
 
