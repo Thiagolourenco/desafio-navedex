@@ -1,6 +1,7 @@
 import Styled from "styled-components/native";
+import { scale } from "react-native-size-matters";
 
-import { colors } from '../../../../constants/colors'
+import { colors } from "../../../../constants/colors";
 
 export const Container = Styled.View`
   flex: 1;
@@ -10,8 +11,8 @@ export const Container = Styled.View`
 
 export const Header = Styled.View`
   flex: 0.4;
-  height: 100px;
-  width: 100px;
+  height: ${scale(100)}px;
+  width: ${scale(100)}px;
 `;
 
 export const Content = Styled.View`

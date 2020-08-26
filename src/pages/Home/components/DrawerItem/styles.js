@@ -1,13 +1,14 @@
 import Styled from "styled-components/native";
 import { RectButton } from "react-native-gesture-handler";
+import { scale } from "react-native-size-matters";
 
 import { colors } from "../../../../constants/colors";
 
 export const ButtonItem = Styled(RectButton)`
-  height: 40px;
-  width: 230px;
+  height: ${scale(40)}px;
+  width: ${scale(230)}px;
   border-radius: 10px;
-  margin-top: 10px;
+  margin-top: ${scale(10)}px;
   align-self: center;
   align-items: center;
   justify-content: center;
@@ -17,7 +18,7 @@ export const ButtonItem = Styled(RectButton)`
 `;
 
 export const ButtonItemText = Styled.Text`
-  font-size: 22px;
+  font-size: ${scale(22)}px;
   color: ${colors.primary};
   font-weight: 600;
   text-align: center;

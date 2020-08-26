@@ -1,4 +1,5 @@
 import Styled from "styled-components/native";
+import { scale } from "react-native-size-matters";
 
 import { colors } from "../../../../constants/colors";
 
@@ -10,8 +11,8 @@ export const Container = Styled.View`
 `;
 
 export const Content = Styled.View`
-    height: 112px;
-    width: 328px;
+    height: ${scale(112)}px;
+    width: ${scale(328)}px;
     background-color: ${colors.white};
     box-shadow: 0px 2px 4px rgba(33, 33, 33, 0.25);
 `;
@@ -19,22 +20,22 @@ export const Content = Styled.View`
 export const ContentHeader = Styled.View`
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 10px;
-    margin-left: 23px;
-    margin-right: 22px;
+    margin-top: ${scale(10)}px;
+    margin-left: ${scale(23)}px;
+    margin-right: ${scale(22)}px;
 `;
 
 export const ContentHeaderTitle = Styled.Text`
-    font-size: 22px;
+    font-size: ${scale(22)}px;
     font-weight: 900;
-    line-height: 32px;
+    line-height: ${scale(32)}px;
     color: ${colors.primary};
 `;
 
 export const ContentValues = Styled.Text`
-    font-size: 16px;
+    font-size: ${scale(16)}px;
     color: ${colors.primary};
-    width: 279px;
+    width: ${scale(279)}px;
     align-self: center;
-    margin-top: 15px;    
+    margin-top: ${scale(15)}px;    
 `;
