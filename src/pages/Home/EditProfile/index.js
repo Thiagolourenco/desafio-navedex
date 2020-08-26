@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, ScrollView } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useSelector, useDispatch } from "react-redux";
@@ -95,54 +95,56 @@ export default function EditProfile() {
       <Title>Editar naver</Title>
 
       <KeyboardAwareScrollView>
-        <Content>
-          <Label>Name</Label>
-          <Input
-            placeholder="Name"
-            value={name}
-            onChangeText={(value) => setName(value)}
-            onSubmitEditing={() => cargoRef.current.focus()}
-          />
-          <Label>Cargo</Label>
-          <Input
-            ref={cargoRef}
-            placeholder="Cargo"
-            value={job_role}
-            onChangeText={(value) => setCargo(value)}
-            onSubmitEditing={() => idadeRef.current.focus()}
-          />
-          <Label>Idade</Label>
-          <Input
-            ref={idadeRef}
-            placeholder="Idade"
-            value={birthdate}
-            onChangeText={(value) => setIdade(value)}
-            onSubmitEditing={() => tempoEmpresaRef.current.focus()}
-          />
-          <Label>Tempo de empresa</Label>
-          <Input
-            ref={tempoEmpresaRef}
-            placeholder="Tempo de empresa"
-            value={admission_date}
-            onChangeText={(value) => setTempoEmpresa(value)}
-            onSubmitEditing={() => projetosParcipouRef.current.focus()}
-          />
-          <Label>Projetos que participou</Label>
-          <Input
-            ref={projetosParcipouRef}
-            placeholder="Projetos que participou"
-            value={project}
-            onChangeText={(value) => setProjetosParcipou(value)}
-            onSubmitEditing={() => urlPhotoRef.current.focus()}
-          />
-          <Label>URL da foto do naver</Label>
-          <Input
-            ref={urlPhotoRef}
-            placeholder="URL da foto do naver"
-            value={url}
-            onChangeText={(value) => setUrlPhoto(value)}
-          />
-        </Content>
+        <ScrollView>
+          <Content>
+            <Label>Name</Label>
+            <Input
+              placeholder="Name"
+              value={name}
+              onChangeText={(value) => setName(value)}
+              onSubmitEditing={() => cargoRef.current.focus()}
+            />
+            <Label>Cargo</Label>
+            <Input
+              ref={cargoRef}
+              placeholder="Cargo"
+              value={job_role}
+              onChangeText={(value) => setCargo(value)}
+              onSubmitEditing={() => idadeRef.current.focus()}
+            />
+            <Label>Idade</Label>
+            <Input
+              ref={idadeRef}
+              placeholder="Idade"
+              value={birthdate}
+              onChangeText={(value) => setIdade(value)}
+              onSubmitEditing={() => tempoEmpresaRef.current.focus()}
+            />
+            <Label>Tempo de empresa</Label>
+            <Input
+              ref={tempoEmpresaRef}
+              placeholder="Tempo de empresa"
+              value={admission_date}
+              onChangeText={(value) => setTempoEmpresa(value)}
+              onSubmitEditing={() => projetosParcipouRef.current.focus()}
+            />
+            <Label>Projetos que participou</Label>
+            <Input
+              ref={projetosParcipouRef}
+              placeholder="Projetos que participou"
+              value={project}
+              onChangeText={(value) => setProjetosParcipou(value)}
+              onSubmitEditing={() => urlPhotoRef.current.focus()}
+            />
+            <Label>URL da foto do naver</Label>
+            <Input
+              ref={urlPhotoRef}
+              placeholder="URL da foto do naver"
+              value={url}
+              onChangeText={(value) => setUrlPhoto(value)}
+            />
+          </Content>
+        </ScrollView>
         <ButtonSave onPress={handleEditNaver}>
           {loading ? (
             <ActivityIndicator size="small" color={colors.white} />
