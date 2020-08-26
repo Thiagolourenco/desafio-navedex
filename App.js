@@ -1,21 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import "react-native-gesture-handler";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import FlashMessage from 'react-native-flash-message';
+import {AppLoading} from 'expo'
+import { useFonts } from '@use-expo/font';
+
+import "./src/config/ReactotronConfig";
+import Index from "./src";
+import { store, persistor } from "./src/store";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  let [isLoaded] = useFonts({
+    'Montserrat-Regular': require('./src/assets/fonts/Montserrat-Regular.ttf'),
+    'Montserrat-SemiBold': require('./src/assets/fonts/Montserrat-SemiBold.ttf'),
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  // console.log(fontsLoaded);
+
+  if(!isLoaded) {
+    return <AppLoading />
+  }else {
+    return (
+      <NavigationContainer>
+        <Provider store={store}>
+          <PersistGate persistor={persistor}>
+            <Index />
+            <FlashMessage position="top" floating={true} />
+  
+          </PersistGate>
+        </Provider>
+      </NavigationContainer>
+    );
+  }
+ 
+}
