@@ -16,11 +16,10 @@ export const InputContent = Styled.View`
 
 export const Label = Styled.Text`
     font-size: ${scale(14)}px;
-    font-weight: 600;
     line-height: 18px;
     color:${colors.primary};
     margin-top: ${scale(30)}px;
-    /* font-family: Montserrat-Regular; */
+    font-family: Montserrat-SemiBold
 
 `;
 
@@ -33,6 +32,7 @@ export const Input = Styled.TextInput.attrs({
   border-color: ${colors.borderColor};
   padding-left: ${moderateScale(10)}px;
   margin-top: ${scale(5)}px;
+  font-family: Montserrat-Regular; 
 `;
 
 export const ButtonLogin = Styled(RectButton)`
@@ -47,6 +47,7 @@ export const ButtonLogin = Styled(RectButton)`
 export const ButtonLoginText = Styled.Text`
     font-size: ${scale(14)}px;
     line-height: 24px;
-    font-weight: 600;
     color: ${colors.white};
+    font-family: Montserrat-SemiBold
+
 `;

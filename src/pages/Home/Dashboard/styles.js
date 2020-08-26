@@ -18,9 +18,9 @@ export const HeaderButton = Styled.View`
 
 export const TitleNavers = Styled.Text`
     font-size:  ${scale(22)}px;
-    font-weight: 600;
     color: ${colors.primary};
     line-height: ${scale(32)}px;
+    font-family: Montserrat-SemiBold
 `;
 
 export const ButtonAddNave = Styled(RectButton)`
@@ -34,8 +34,8 @@ export const ButtonAddNave = Styled(RectButton)`
 export const ButtonAddNaveText = Styled.Text`
     color: ${colors.white};
     font-size: ${scale(14)}px;
-    font-weight: 600;
     line-height: ${scale(24)}px;
+    font-family: Montserrat-SemiBold
 `;
 
 export const ListViewContent = Styled.View`
@@ -61,15 +61,17 @@ export const ImageV = Styled.Image`
 export const ListViewContentText = Styled.Text`
     font-size: ${scale(14)}px;
     color: ${colors.primary};
-    font-weight: 600;
     line-height: ${scale(20)}px;
+    font-family: Montserrat-SemiBold
 `;
 
 export const ListViewContentTextSubTitle = Styled.Text`
-    font-size: ${scale(14)}px;
+    font-size: ${scale(12)}px;
     color: ${colors.primary};
     font-weight: normal;
     line-height: ${scale(16)}px;
+    /* margin-top: ${scale(2)}px; */
+    font-family: Montserrat-Regular
 `;
 
 export const GroupButton = Styled.View`

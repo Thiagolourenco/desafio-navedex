@@ -20,6 +20,6 @@ export const ButtonItem = Styled(RectButton)`
 export const ButtonItemText = Styled.Text`
   font-size: ${scale(22)}px;
   color: ${colors.primary};
-  font-weight: 600;
+  font-family: Montserrat-SemiBold;
   text-align: center;
 `;

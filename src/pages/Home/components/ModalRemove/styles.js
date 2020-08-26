@@ -28,7 +28,7 @@ export const ContentHeader = Styled.View`
 
 export const ContentHeaderTitle = Styled.Text`
     font-size: ${scale(22)}px;
-    font-weight: 900;
+    font-family: Montserrat-SemiBold;
     line-height: ${scale(32)}px;
     color: ${colors.primary};
 `;
@@ -39,6 +39,7 @@ export const ContentValues = Styled.Text`
     width: ${scale(279)}px;
     align-self: center;
     margin-top: ${scale(20)}px;    
+    font-family: Montserrat-SemiBold;
 
 `;
 
@@ -64,7 +65,7 @@ export const ButtonCancel = Styled.TouchableOpacity.attrs({
 export const ButtonCancelText = Styled.Text`
     font-size: ${scale(14)}px;
     color: ${colors.primary};
-    font-weight: 600;
+    font-family: Montserrat-SemiBold;
 `;
 
 export const ButtonRemove = Styled.TouchableOpacity.attrs({
@@ -81,5 +82,5 @@ export const ButtonRemove = Styled.TouchableOpacity.attrs({
 export const ButtonRemoveText = Styled.Text`
     font-size: ${scale(14)}px;
     color: ${colors.white};
-    font-weight: 600;
+    font-family: Montserrat-SemiBold;
 `;

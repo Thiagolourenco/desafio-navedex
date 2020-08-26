@@ -21,17 +21,17 @@ export const ImageProfile = Styled.Image`
 
 export const TextName = Styled.Text`
     font-size: ${scale(22)}px;
-    font-weight: 600;
     line-height: ${scale(32)}px;
     color: ${colors.primary};
+    font-family: Montserrat-SemiBold;
 `;
 
 export const TextData = Styled.Text`
     font-size: ${scale(16)}px;
     color: ${colors.primary};
-    font-weight: 600;
     line-height: ${scale(24)}px;
     margin-top: ${scale(15)}px;
+    font-family: Montserrat-SemiBold;
 
 `;
 
@@ -39,6 +39,7 @@ export const TextValues = Styled.Text`
     font-size: ${scale(16)}px;
     color:${colors.primary};
     line-height: ${scale(24)}px;
+    font-family: Montserrat-Regular;
 `;
 
 export const GroupButton = Styled.View`
@@ -65,9 +66,8 @@ export const ButtonCancel = Styled.TouchableOpacity.attrs({
 export const ButtonCancelText = Styled.Text`
       font-size: ${scale(14)}px;
       color: ${colors.primary};
-      font-weight: 600;
       margin-left: ${scale(8)}px;
-
+      font-family: Montserrat-SemiBold;
   `;
 
 export const ButtonEdit = Styled(RectButton)`
@@ -84,7 +84,7 @@ export const ButtonEdit = Styled(RectButton)`
 export const ButtonEditText = Styled.Text`
       font-size: ${scale(14)}px;
       color: ${colors.white};
-      font-weight: 600;
+      font-family: Montserrat-SemiBold;
       margin-left: ${scale(8)}px;
   `;
 

@@ -11,21 +11,20 @@ export const Container = Styled.View`
 export const Title = Styled.Text`
     font-size: ${scale(22)}px;
     color: ${colors.primary};
-    font-weight: 600;
     text-align: center;
     margin-top: ${scale(20)}px;
+    font-family: Montserrat-SemiBold;
 `;
 
 export const Content = Styled.View`
-    /* margin-left: ${scale(15)}px; */
     align-self: center;
 `;
 
 export const Label = Styled.Text`
     font-size: 14px;
-    font-weight: 600;
     color:  ${colors.primary};
     margin-top: ${scale(20)}px;
+    font-family: Montserrat-SemiBold;
 `;
 
 export const Input = Styled.TextInput.attrs({
@@ -37,6 +36,7 @@ export const Input = Styled.TextInput.attrs({
     border-color: ${colors.borderColor};
     padding-left: ${moderateScale(10)}px;
     margin-top: ${scale(2)}px;
+    font-family: Montserrat-Regular;
 `;
 
 export const ButtonSave = Styled(RectButton)`
@@ -48,6 +48,7 @@ export const ButtonSave = Styled(RectButton)`
     margin-top: ${scale(35)}px;
     align-self: center;
     margin-bottom: ${scale(10)}px;
+    font-family: Montserrat-SemiBold;
 `;
 
 export const ButtonSaveText = Styled.Text`

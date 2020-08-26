@@ -3,6 +3,7 @@ import { scale } from "react-native-size-matters";
 
 import { colors } from "../../../../constants/colors";
 
+// font-family: Montserrat-SemiBold
 export const Container = Styled.View`
     flex: 1;
     background-color: rgba(0,0,0,0.7);
@@ -27,7 +28,7 @@ export const ContentHeader = Styled.View`
 
 export const ContentHeaderTitle = Styled.Text`
     font-size: ${scale(22)}px;
-    font-weight: 900;
+    font-family: Montserrat-SemiBold;
     line-height: ${scale(32)}px;
     color: ${colors.primary};
 `;
@@ -38,4 +39,5 @@ export const ContentValues = Styled.Text`
     width: ${scale(279)}px;
     align-self: center;
     margin-top: ${scale(15)}px;    
+    font-family: Montserrat-SemiBold;
 `;
